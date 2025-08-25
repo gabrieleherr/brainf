@@ -5,13 +5,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -19,6 +13,18 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Rules for future team handling
+
+Users can sign up by logging in with either github or google.
+
+- Only teams can participate in the contest
+- When a user initially logs in, they have the option of creating a team
+- When a team is created, the creator automatically becomes a member, and a team passcode is created
+- Any outside member can join this team with this team name/passcode combination
+- Any team member can modify the team name and passcode
+- A user can only ever be a member of 1 team
+- Users always have the option of joining a new team, but that will remove them from any current team they are on
 
 ## Learn More
 

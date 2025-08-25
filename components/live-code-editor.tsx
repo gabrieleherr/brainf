@@ -1,75 +1,79 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Textarea } from '@/components/ui/textarea';
+import { useState } from 'react';
 
 export default function LiveCodeEditor() {
   const [code, setCode] = useState(
-    "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.>+.+++.------.--------.>+.>+.",
-  )
-  const [output, setOutput] = useState("")
-  const [input, setInput] = useState("")
-  const [isRunning, setIsRunning] = useState(false)
+    '++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.>+.+++.------.--------.>+.>+.',
+  );
+  const [output, setOutput] = useState('');
+  const [input, setInput] = useState('');
+  const [isRunning, setIsRunning] = useState(false);
 
   const runCode = () => {
-    setIsRunning(true)
-    setOutput("")
+    setIsRunning(true);
+    setOutput('');
 
     try {
-      const result = interpretBrainF(code, input)
-      setOutput(result)
+      const result = interpretBrainF(code, input);
+      setOutput(result);
     } catch (error) {
-      setOutput(`Error: ${error instanceof Error ? error.message : "Unknown error"}`)
+      setOutput(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
 
-    setIsRunning(false)
-  }
+    setIsRunning(false);
+  };
 
   const loadExample = (exampleCode: string, description: string) => {
-    setCode(exampleCode)
-    setOutput("")
-    setInput("")
-  }
+    setCode(exampleCode);
+    setOutput('');
+    setInput('');
+  };
 
   return (
-    <div className="grid md:grid-cols-2 gap-6">
+    <div className="grid gap-6 md:grid-cols-2">
       {/* Left Column - Editor and Input */}
       <div className="space-y-4">
         {/* Code Editor */}
         <div>
-          <label className="block text-sm font-medium mb-2">BrainF++ Code:</label>
+          <label className="mb-2 block text-sm font-medium">BrainF++ Code:</label>
           <Textarea
             value={code}
-            onChange={(e) => setCode(e.target.value)}
-            className="font-mono text-sm min-h-[200px] bg-black/90 text-green-400 border-muted"
+            onChange={e => setCode(e.target.value)}
+            className="border-muted min-h-[200px] bg-black/90 font-mono text-sm text-green-400"
             placeholder="Enter your BrainF++ code here..."
           />
         </div>
 
         {/* Input */}
         <div>
-          <label className="block text-sm font-medium mb-2">Input (for programs that use ,):</label>
+          <label className="mb-2 block text-sm font-medium">Input (for programs that use ,):</label>
           <Textarea
             value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className="font-mono text-sm h-20 bg-muted/50"
+            onChange={e => setInput(e.target.value)}
+            className="bg-muted/50 h-20 font-mono text-sm"
             placeholder="Enter input characters here..."
           />
         </div>
 
         {/* Controls */}
-        <div className="flex gap-2 flex-wrap">
-          <Button onClick={runCode} disabled={isRunning} className="bg-cyan-500 hover:bg-cyan-600 text-black font-mono">
-            {isRunning ? "Running..." : "Run Code"}
+        <div className="flex flex-wrap gap-2">
+          <Button
+            onClick={runCode}
+            disabled={isRunning}
+            className="bg-cyan-500 font-mono text-black hover:bg-cyan-600"
+          >
+            {isRunning ? 'Running...' : 'Run Code'}
           </Button>
           <Button
             variant="outline"
             onClick={() =>
               loadExample(
-                "+++++++++[>++++++++<-]>+.>++++++++++[>++++++++++<-]>+.+++++++..+++.>++++[>+++++++++++<-]>+.<<+++++++++++++++.>.+++.------.--------.>+.",
-                "Hello World",
+                '+++++++++[>++++++++<-]>+.>++++++++++[>++++++++++<-]>+.+++++++..+++.>++++[>+++++++++++<-]>+.<<+++++++++++++++.>.+++.------.--------.>+.',
+                'Hello World',
               )
             }
             className="font-mono"
@@ -78,12 +82,14 @@ export default function LiveCodeEditor() {
           </Button>
           <Button
             variant="outline"
-            onClick={() => loadExample("++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++.>+.", "Hi!")}
+            onClick={() =>
+              loadExample('++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++.>+.', 'Hi!')
+            }
             className="font-mono"
           >
             Load Simple Hi
           </Button>
-          <Button variant="outline" onClick={() => setCode("")} className="font-mono">
+          <Button variant="outline" onClick={() => setCode('')} className="font-mono">
             Clear
           </Button>
         </div>
@@ -92,85 +98,85 @@ export default function LiveCodeEditor() {
       {/* Right Column - Output */}
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium mb-2">Output:</label>
+          <label className="mb-2 block text-sm font-medium">Output:</label>
           <Card className="h-full">
-            <CardContent className="p-4 h-full">
-              <pre className="font-mono text-sm bg-black/90 text-green-400 p-4 rounded min-h-[280px] whitespace-pre-wrap">
-                {output || "Run your code to see output here..."}
+            <CardContent className="h-full p-4">
+              <pre className="min-h-[280px] whitespace-pre-wrap rounded bg-black/90 p-4 font-mono text-sm text-green-400">
+                {output || 'Run your code to see output here...'}
               </pre>
             </CardContent>
           </Card>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 // Simple BrainF++ interpreter
 function interpretBrainF(code: string, input: string): string {
-  const memory = new Array(30000).fill(0)
-  let pointer = 0
-  let codePointer = 0
-  let inputPointer = 0
-  let output = ""
-  let steps = 0
-  const maxSteps = 100000
+  const memory = new Array(30000).fill(0);
+  let pointer = 0;
+  let codePointer = 0;
+  let inputPointer = 0;
+  let output = '';
+  let steps = 0;
+  const maxSteps = 100000;
 
   while (codePointer < code.length && steps < maxSteps) {
-    const command = code[codePointer]
-    steps++
+    const command = code[codePointer];
+    steps++;
 
     switch (command) {
-      case ">":
-        pointer = (pointer + 1) % memory.length
-        break
-      case "<":
-        pointer = (pointer - 1 + memory.length) % memory.length
-        break
-      case "+":
-        memory[pointer] = (memory[pointer] + 1) % 256
-        break
-      case "-":
-        memory[pointer] = (memory[pointer] - 1 + 256) % 256
-        break
-      case ".":
-        output += String.fromCharCode(memory[pointer])
-        break
-      case ",":
+      case '>':
+        pointer = (pointer + 1) % memory.length;
+        break;
+      case '<':
+        pointer = (pointer - 1 + memory.length) % memory.length;
+        break;
+      case '+':
+        memory[pointer] = (memory[pointer] + 1) % 256;
+        break;
+      case '-':
+        memory[pointer] = (memory[pointer] - 1 + 256) % 256;
+        break;
+      case '.':
+        output += String.fromCharCode(memory[pointer]);
+        break;
+      case ',':
         if (inputPointer < input.length) {
-          memory[pointer] = input.charCodeAt(inputPointer)
-          inputPointer++
+          memory[pointer] = input.charCodeAt(inputPointer);
+          inputPointer++;
         } else {
-          memory[pointer] = 0
+          memory[pointer] = 0;
         }
-        break
-      case "[":
+        break;
+      case '[':
         if (memory[pointer] === 0) {
-          let bracketCount = 1
+          let bracketCount = 1;
           while (bracketCount > 0 && codePointer < code.length - 1) {
-            codePointer++
-            if (code[codePointer] === "[") bracketCount++
-            if (code[codePointer] === "]") bracketCount--
+            codePointer++;
+            if (code[codePointer] === '[') bracketCount++;
+            if (code[codePointer] === ']') bracketCount--;
           }
         }
-        break
-      case "]":
+        break;
+      case ']':
         if (memory[pointer] !== 0) {
-          let bracketCount = 1
+          let bracketCount = 1;
           while (bracketCount > 0 && codePointer > 0) {
-            codePointer--
-            if (code[codePointer] === "]") bracketCount++
-            if (code[codePointer] === "[") bracketCount--
+            codePointer--;
+            if (code[codePointer] === ']') bracketCount++;
+            if (code[codePointer] === '[') bracketCount--;
           }
         }
-        break
+        break;
     }
-    codePointer++
+    codePointer++;
   }
 
   if (steps >= maxSteps) {
-    throw new Error("Program exceeded maximum execution steps (possible infinite loop)")
+    throw new Error('Program exceeded maximum execution steps (possible infinite loop)');
   }
 
-  return output
+  return output;
 }

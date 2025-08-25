@@ -4,7 +4,7 @@
     "prettier-plugin-tailwindcss",
     "prettier-plugin-pkg"
   ],
-  "tailwindStylesheet": "./app/tailwind.css",
+  "tailwindStylesheet": "./app/globals.css",
   "tailwindFunctions": ["clsx"],
   "singleQuote": true,
   "printWidth": 100,
