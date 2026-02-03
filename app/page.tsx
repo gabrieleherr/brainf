@@ -8,23 +8,23 @@ export default function HomePage() {
     <div>
       <Navigation />
 
-      <main className="container mx-auto max-w-4xl space-y-16 px-4 py-16">
+      <main className="container mx-auto max-w-5xl space-y-16 px-4 py-16">
         <div className="text-center">
           <div className="mb-8">
             <h1 className="mb-4 bg-gradient-to-r from-pink-500 via-cyan-400 to-yellow-400 bg-clip-text font-mono text-8xl font-bold tracking-tight text-transparent md:text-9xl">
               BrainF++
             </h1>
             <div className="mb-6 flex items-center justify-center gap-2">
-              <div className="bg-muted h-1 w-12 rounded"></div>
-              <div className="bg-muted h-3 w-3 rounded-full"></div>
-              <div className="bg-muted h-1 w-12 rounded"></div>
+              <div className="h-1 w-12 rounded bg-muted"></div>
+              <div className="h-3 w-3 rounded-full bg-muted"></div>
+              <div className="h-1 w-12 rounded bg-muted"></div>
             </div>
           </div>
 
           <h2 className="mb-6 text-3xl font-bold md:text-4xl">
             The <span className="font-mono">Ridiculously</span> Minimalist Programming Language
           </h2>
-          <p className="text-muted-foreground mb-8 text-xl leading-relaxed">
+          <p className="mb-8 text-xl leading-relaxed text-muted-foreground">
             BrainF++ is like programming with your hands tied behind your back... and blindfolded...
             while riding a unicycle. With only 8 commands, it's somehow Turing complete and can
             theoretically run anything your fancy modern languages can. It's the programming
@@ -57,9 +57,9 @@ export default function HomePage() {
               { cmd: '[', desc: 'Jump forward if cell is zero (maybe skip?)' },
               { cmd: ']', desc: "Jump back if cell is non-zero (let's loop!)" },
             ].map(({ cmd, desc }) => (
-              <Card key={cmd} className="bg-muted/50 hover:bg-muted/70 transition-colors">
+              <Card key={cmd} className="bg-muted/50 transition-colors hover:bg-muted/70">
                 <CardContent className="flex items-center gap-4 p-4">
-                  <div className="bg-muted rounded-lg px-4 py-3 font-mono text-2xl font-bold">
+                  <div className="rounded-lg bg-muted px-4 py-3 font-mono text-2xl font-bold">
                     {cmd}
                   </div>
                   <div className="text-sm font-medium">{desc}</div>
@@ -80,7 +80,7 @@ export default function HomePage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="overflow-x-auto rounded-lg bg-black/90 p-6 font-mono text-sm">
-                <div className="whitespace-nowrap leading-relaxed text-green-400">
+                <div className="leading-relaxed whitespace-nowrap text-green-400">
                   ++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]
                   <br />
                   &gt;++.&gt;+.+++++++..+++.&gt;++.
@@ -88,7 +88,7 @@ export default function HomePage() {
                   &lt;&lt;+++++++++++++++.&gt;.&gt;+.+++.------.--------.&gt;+.&gt;+.
                 </div>
               </div>
-              <div className="text-muted-foreground space-y-3 text-sm">
+              <div className="space-y-3 text-sm text-muted-foreground">
                 <p>
                   <strong className="text-cyan-400">
                     What's happening here? (Spoiler: it's complicated)
@@ -160,7 +160,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-3xl text-center">
           <h3 className="mb-6 text-4xl font-bold">Join the Madness: BrainF++ Contest</h3>
           <div className="rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 p-8">
-            <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+            <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
               Think you've mastered the art of programming with 8 commands? Put your skills to the
               test in our monthly BrainF++ coding contests! Compete against fellow masochists...
               err, enthusiasts... to solve algorithmic challenges using nothing but the magnificent
@@ -183,8 +183,8 @@ export default function HomePage() {
 
         <div className="mx-auto max-w-3xl text-center">
           <h3 className="mb-6 text-4xl font-bold">The Origin Story</h3>
-          <div className="bg-muted/20 rounded-xl border p-8">
-            <p className="text-muted-foreground text-lg leading-relaxed">
+          <div className="rounded-xl border bg-muted/20 p-8">
+            <p className="text-lg leading-relaxed text-muted-foreground">
               Back in <span className="font-semibold text-cyan-400">1993</span>,{' '}
               <span className="font-semibold text-cyan-400">Urban Müller</span> looked at
               programming languages and thought "You know what? These have way too many features."
