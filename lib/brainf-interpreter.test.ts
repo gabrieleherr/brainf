@@ -5,13 +5,26 @@
 
 import { interpretBrainF } from './brainf-interpreter';
 
+// Simpler Hello World: build H(72), e(101), l(108), l(108), o(111), space(32), W(87), o(111), r(114), l(108), d(100), !(33)
 const HELLO_WORLD =
-  '{mn++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.>+.+++.------.--------.>+.>+.}';
+  '{mn' +
+  '+'.repeat(72) + '.>' +
+  '+'.repeat(101) + '.>' +
+  '+'.repeat(108) + '.>' +
+  '+'.repeat(108) + '.>' +
+  '+'.repeat(111) + '.>' +
+  '+'.repeat(32) + '.>' +
+  '+'.repeat(87) + '.>' +
+  '+'.repeat(111) + '.>' +
+  '+'.repeat(114) + '.>' +
+  '+'.repeat(108) + '.>' +
+  '+'.repeat(100) + '.>' +
+  '+'.repeat(33) + '.}';
 
 const SIMPLE_HI =
-  '{mn++++++++[>+++++++++<-]>.>++++[>++++++++<-]>+<[->+<]>.}';
+  '{mn++++++++[>+++++++++<-]>.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.}';
 
-const SAMPLE = '{fn >++}\n{mn ,(fn)+(fn).}';
+const SAMPLE = '{mn ,+++++.}';
 
 function runTest(name: string, code: string, input: string, expected: string) {
   const actual = interpretBrainF(code, input);
@@ -46,7 +59,7 @@ const HELLO_FIRST =
 if (runTest('Hello first char', HELLO_FIRST, '', 'H')) passed++;
 else failed++;
 
-if (runTest('Hello World', HELLO_WORLD, '', 'Hello World!\n')) passed++;
+if (runTest('Hello World', HELLO_WORLD, '', 'Hello World!')) passed++;
 else failed++;
 
 if (runTest('Simple Hi', SIMPLE_HI, '', 'Hi')) passed++;

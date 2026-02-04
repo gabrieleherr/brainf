@@ -188,11 +188,11 @@ function runFunction(
         return memory[cellPointer];
 
       case '+':
-        memory[cellPointer] = toShort(memory[cellPointer] + 1);
+        memory[cellPointer] = wrapCell(toShort(memory[cellPointer] + 1));
         break;
 
       case '-':
-        memory[cellPointer] = toShort(memory[cellPointer] - 1);
+        memory[cellPointer] = wrapCell(toShort(memory[cellPointer] - 1));
         break;
 
       case '<':
@@ -216,7 +216,9 @@ function runFunction(
         break;
 
       case ',':
-        memory[cellPointer] = hasInput() ? toShort(getInputChar()) : 0;
+        memory[cellPointer] = hasInput()
+          ? wrapCell(toShort(getInputChar()))
+          : 0;
         break;
 
       case '"':
@@ -283,7 +285,7 @@ function runFunction(
 
           if (returnValue === -1) return -1;
 
-          memory[cellPointer] = toShort(returnValue);
+          memory[cellPointer] = wrapCell(toShort(returnValue));
 
           for (let x = maxPointer + 1; x < limit; x++) {
             memory[x] = 0;
@@ -298,10 +300,6 @@ function runFunction(
 
     if (cellPointer < 0 || cellPointer >= limit) {
       return -1;
-    }
-
-    if (memory[cellPointer] < 0) {
-      memory[cellPointer] = 32767 + memory[cellPointer] + 1;
     }
   }
 
