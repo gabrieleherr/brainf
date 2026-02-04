@@ -22,7 +22,7 @@ export default function HomePage() {
           </div>
 
           <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-            The <span className="font-mono">Ridiculously</span> Minimalist Programming Language
+            The <span className="font-mono">ridiculously</span> minimalist programming language
           </h2>
           <p className="mb-8 text-xl leading-relaxed text-muted-foreground">
             BrainF++ is like programming with your hands tied behind your back... and blindfolded...
@@ -33,19 +33,20 @@ export default function HomePage() {
 
           <div className="mb-12 flex justify-center gap-4">
             <Button
+              asChild
               size="lg"
               className="border-0 bg-cyan-500 font-mono text-black shadow-lg hover:bg-cyan-600"
             >
-              Try Online Editor
+              <a href="#editor">Try Online Editor</a>
             </Button>
-            <Button size="lg" variant="outline" className="bg-transparent font-mono">
-              Learn the Commands
+            <Button asChild size="lg" variant="outline" className="bg-transparent font-mono">
+              <a href="#commands">Learn the Commands</a>
             </Button>
           </div>
         </div>
 
-        <div className="mx-auto max-w-4xl">
-          <h3 className="mb-8 text-center text-4xl font-bold">The Magnificent Eight</h3>
+        <div id="commands" className="mx-auto max-w-4xl scroll-mt-8">
+          <h3 className="mb-8 text-center text-4xl font-bold">Only eight commands</h3>
           <div className="grid gap-4 md:grid-cols-2">
             {[
               { cmd: '>', desc: 'Move pointer right (baby steps)' },
@@ -70,10 +71,10 @@ export default function HomePage() {
         </div>
 
         <div className="mx-auto max-w-2xl">
-          <h3 className="mb-8 text-center text-4xl font-bold">The Legendary "Hello World!"</h3>
+          <h3 className="mb-8 text-center text-4xl font-bold">How to write "Hello World!"</h3>
           <Card>
             <CardHeader>
-              <CardTitle className="font-mono text-lg">Your First Masterpiece</CardTitle>
+              <CardTitle className="font-mono text-lg">Your first masterpiece</CardTitle>
               <CardDescription>
                 This program outputs "Hello World!" and will make you question your life choices
               </CardDescription>
@@ -140,13 +141,11 @@ export default function HomePage() {
           </Card>
         </div>
 
-        <div className="mx-auto max-w-4xl">
-          <h3 className="mb-8 text-center text-4xl font-bold">
-            Your Turn to Suffer... I Mean, Code!
-          </h3>
+        <div id="editor" className="mx-auto max-w-4xl scroll-mt-8">
+          <h3 className="mb-8 text-center text-4xl font-bold">Live BrainF++ playground</h3>
           <Card>
-            <CardHeader>
-              <CardTitle className="font-mono text-lg">Live BrainF++ Playground</CardTitle>
+            <CardHeader className="sr-only">
+              <CardTitle>Playground</CardTitle>
               <CardDescription>
                 Write and run BrainF++ code. Warning: may cause existential crisis
               </CardDescription>
@@ -158,7 +157,7 @@ export default function HomePage() {
         </div>
 
         <div className="mx-auto max-w-3xl text-center">
-          <h3 className="mb-6 text-4xl font-bold">Join the Madness: BrainF++ Contest</h3>
+          <h3 className="mb-6 text-4xl font-bold">Join the madness: BrainF++ contest</h3>
           <div className="rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 p-8">
             <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
               Think you've mastered the art of programming with 8 commands? Put your skills to the
@@ -172,17 +171,17 @@ export default function HomePage() {
                 size="lg"
                 className="border-0 bg-cyan-500 font-mono text-black shadow-lg hover:bg-cyan-600"
               >
-                <a href="/contest">Join Next Contest</a>
+                <a href="/contest">Join next contest</a>
               </Button>
               <Button size="lg" variant="outline" className="bg-transparent font-mono">
-                <a href="/docs">Read the Rules</a>
+                <a href="/docs">Read the rules</a>
               </Button>
             </div>
           </div>
         </div>
 
         <div className="mx-auto max-w-3xl text-center">
-          <h3 className="mb-6 text-4xl font-bold">The Origin Story</h3>
+          <h3 className="mb-6 text-4xl font-bold">The origin story</h3>
           <div className="rounded-xl border bg-muted/20 p-8">
             <p className="text-lg leading-relaxed text-muted-foreground">
               Back in <span className="font-semibold text-cyan-400">1993</span>,{' '}

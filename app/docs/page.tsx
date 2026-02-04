@@ -13,18 +13,26 @@ export default function DocsPage() {
           <Badge className="mb-4 font-mono" variant="secondary">
             Documentation
           </Badge>
-          <h1 className="mb-4 text-4xl font-bold">BrainF++ Documentation</h1>
-          <p className="text-muted-foreground text-xl">
+          <h1 className="mb-4 text-4xl font-bold">BrainF++ documentation</h1>
+          <p className="text-xl text-muted-foreground">
             Complete guide to programming in BrainF++ and using the contest platform.
           </p>
         </div>
 
         <Tabs defaultValue="language" className="w-full">
           <TabsList className="grid w-full grid-cols-4 font-mono">
-            <TabsTrigger value="language">Language</TabsTrigger>
-            <TabsTrigger value="editor">Editor</TabsTrigger>
-            <TabsTrigger value="contests">Contests</TabsTrigger>
-            <TabsTrigger value="api">API</TabsTrigger>
+            <TabsTrigger className="cursor-pointer" value="language">
+              Language
+            </TabsTrigger>
+            <TabsTrigger className="cursor-pointer" value="editor">
+              Editor
+            </TabsTrigger>
+            <TabsTrigger className="cursor-pointer" value="contests">
+              Contests
+            </TabsTrigger>
+            <TabsTrigger className="cursor-pointer" value="api">
+              API
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="language" className="space-y-6">
@@ -45,11 +53,11 @@ export default function DocsPage() {
                     { cmd: '[', desc: 'Start loop', example: '[' },
                     { cmd: ']', desc: 'End loop', example: ']' },
                   ].map(({ cmd, desc, example }) => (
-                    <div key={cmd} className="bg-muted flex gap-3 rounded-lg p-3">
-                      <span className="text-primary w-6 font-mono text-lg font-bold">{cmd}</span>
+                    <div key={cmd} className="flex gap-3 rounded-lg bg-muted p-3">
+                      <span className="w-6 font-mono text-lg font-bold text-primary">{cmd}</span>
                       <div className="flex-1">
                         <div className="text-sm font-medium">{desc}</div>
-                        <div className="text-muted-foreground font-mono text-xs">{example}</div>
+                        <div className="font-mono text-xs text-muted-foreground">{example}</div>
                       </div>
                     </div>
                   ))}
@@ -64,28 +72,28 @@ export default function DocsPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h4 className="text-accent mb-2 font-mono">Set cell to value (e.g., 10)</h4>
+                  <h4 className="mb-2 font-mono text-accent">Set cell to value (e.g., 10)</h4>
                   <div className="code-block rounded-lg p-3 font-mono text-sm">
                     <span className="text-primary">++++++++++</span>
-                    <span className="text-muted-foreground ml-4">// Adds 10 to current cell</span>
+                    <span className="ml-4 text-muted-foreground">// Adds 10 to current cell</span>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="text-accent mb-2 font-mono">Clear current cell</h4>
+                  <h4 className="mb-2 font-mono text-accent">Clear current cell</h4>
                   <div className="code-block rounded-lg p-3 font-mono text-sm">
                     <span className="text-primary">[-]</span>
-                    <span className="text-muted-foreground ml-4">// Sets current cell to 0</span>
+                    <span className="ml-4 text-muted-foreground">// Sets current cell to 0</span>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="text-accent mb-2 font-mono">Copy cell value</h4>
+                  <h4 className="mb-2 font-mono text-accent">Copy cell value</h4>
                   <div className="code-block rounded-lg p-3 font-mono text-sm">
                     <span className="text-primary">
                       [&gt;-&gt;+&gt;&gt;{'&lt;&lt;'}]&gt;&gt;[{'&lt;&lt;'}+&gt;&gt;&gt;-]
                     </span>
-                    <span className="text-muted-foreground ml-4">// Copies cell 0 to cell 2</span>
+                    <span className="ml-4 text-muted-foreground">// Copies cell 0 to cell 2</span>
                   </div>
                 </div>
               </CardContent>
@@ -101,7 +109,7 @@ export default function DocsPage() {
               <CardContent className="space-y-4">
                 <div>
                   <h4 className="mb-2 font-semibold">Running Code</h4>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm text-muted-foreground">
                     Click the "Run" button to execute your BrainF++ code. The output will appear in
                     the console panel.
                   </p>
@@ -109,7 +117,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="mb-2 font-semibold">Memory Visualization</h4>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm text-muted-foreground">
                     The Memory tab shows the current state of the memory array, with the data
                     pointer highlighted.
                   </p>
@@ -117,7 +125,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="mb-2 font-semibold">Debug Information</h4>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm text-muted-foreground">
                     View execution statistics including step count, output length, and error
                     messages in the Debug tab.
                   </p>
@@ -125,7 +133,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="mb-2 font-semibold">Example Programs</h4>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm text-muted-foreground">
                     Use the dropdown menu to load pre-written example programs and learn from
                     working code.
                   </p>
@@ -143,7 +151,7 @@ export default function DocsPage() {
               <CardContent className="space-y-4">
                 <div>
                   <h4 className="mb-2 font-semibold">Registration</h4>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm text-muted-foreground">
                     Register for contests individually or as a team. Team contests require all
                     members to be online during the event.
                   </p>
@@ -151,7 +159,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="mb-2 font-semibold">Scoring</h4>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm text-muted-foreground">
                     Points are awarded based on correctness, code length (for golf contests), and
                     submission time.
                   </p>
@@ -159,7 +167,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="mb-2 font-semibold">Submissions</h4>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm text-muted-foreground">
                     Submit your solutions through the contest interface. You can resubmit multiple
                     times with potential penalties.
                   </p>
@@ -175,7 +183,7 @@ export default function DocsPage() {
                 <CardDescription>Integration endpoints for external tools</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-muted-foreground text-sm">
+                <div className="text-sm text-muted-foreground">
                   API documentation coming soon. Contact support for early access to the developer
                   API.
                 </div>

@@ -8,12 +8,12 @@ export default function ContestPage() {
     <div>
       <Navigation />
 
-      <main className="container space-y-16 py-16">
+      <main className="container mx-auto max-w-5xl space-y-16 px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-6 bg-gradient-to-r from-pink-500 via-cyan-400 to-yellow-400 bg-clip-text font-mono text-6xl font-bold text-transparent">
-            BrainF++ Contest
+            BrainF++ contest
           </h1>
-          <p className="text-muted-foreground mb-8 text-xl leading-relaxed">
+          <p className="mb-8 text-xl leading-relaxed text-muted-foreground">
             Welcome to the ultimate test of minimalist programming prowess! Can you solve complex
             problems with just 8 commands?
           </p>
@@ -36,15 +36,15 @@ export default function ContestPage() {
               <div className="grid gap-4 text-center md:grid-cols-3">
                 <div>
                   <div className="text-2xl font-bold text-cyan-400">47</div>
-                  <div className="text-muted-foreground text-sm">Participants</div>
+                  <div className="text-sm text-muted-foreground">Participants</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-cyan-400">3d 14h</div>
-                  <div className="text-muted-foreground text-sm">Time Left</div>
+                  <div className="text-sm text-muted-foreground">Time Left</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-cyan-400">$500</div>
-                  <div className="text-muted-foreground text-sm">Prize Pool</div>
+                  <div className="text-sm text-muted-foreground">Prize Pool</div>
                 </div>
               </div>
               <div className="flex justify-center gap-4 pt-4">
@@ -74,7 +74,7 @@ export default function ContestPage() {
                 <CardDescription>"The Sorting Nightmare" - Implement bubble sort</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 text-sm">
+                <p className="mb-4 text-sm text-muted-foreground">
                   Think sorting is hard in normal languages? Try it with just 8 commands!
                 </p>
                 <Button variant="outline" className="w-full bg-transparent font-mono">
@@ -94,7 +94,7 @@ export default function ContestPage() {
                 <CardDescription>"Prime Time Panic" - Find all primes under 100</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 text-sm">
+                <p className="mb-4 text-sm text-muted-foreground">
                   Mathematical algorithms meet minimalist programming. What could go wrong?
                 </p>
                 <Button variant="outline" className="w-full bg-transparent font-mono">
@@ -133,11 +133,11 @@ export default function ContestPage() {
                 <CardContent className="flex items-center justify-between p-6">
                   <div>
                     <div className="font-mono font-bold">{contest.month}</div>
-                    <div className="text-muted-foreground text-sm">{contest.challenge}</div>
+                    <div className="text-sm text-muted-foreground">{contest.challenge}</div>
                   </div>
                   <div className="text-right">
                     <div className="font-mono font-bold text-cyan-400">{contest.winner}</div>
-                    <div className="text-muted-foreground text-sm">{contest.time}</div>
+                    <div className="text-sm text-muted-foreground">{contest.time}</div>
                   </div>
                 </CardContent>
               </Card>
@@ -150,7 +150,7 @@ export default function ContestPage() {
           <h2 className="mb-8 text-center text-4xl font-bold">Contest Rules</h2>
           <Card>
             <CardContent className="space-y-4 p-8">
-              <div className="text-muted-foreground space-y-3">
+              <div className="space-y-3 text-muted-foreground">
                 <p>
                   • <strong className="text-foreground">Pure BrainF++ only</strong> - No cheating
                   with other languages!
