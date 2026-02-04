@@ -68,6 +68,18 @@ export default function LiveCodeEditor() {
           ABC
         </Button>
         <Button
+          variant={selectedExample === 'Sample' ? 'default' : 'outline'}
+          onClick={() =>
+            loadExample(
+              '{fn >++}\n{mn ,(fn)+(fn).}',
+              'Sample',
+            )
+          }
+          className="font-mono"
+        >
+          Sample (input+5)
+        </Button>
+        <Button
           variant="outline"
           onClick={() => {
             setCode('');
@@ -95,7 +107,7 @@ export default function LiveCodeEditor() {
           {/* Input */}
           <div>
             <label className="mb-2 block text-sm font-medium">
-              Input (for programs that use ,):
+              Input (for ,: next unicode char; no more input → 0):
             </label>
             <Textarea
               value={input}
@@ -210,7 +222,7 @@ function interpretBrainF(code: string, input: string): string {
       return "ERROR: '{' found inside function declaration";
     }
 
-    if (/[+\-\[\]<>.,;]/.test(char)) {
+    if (/[+\-\[\]<>.,;"]/.test(char)) {
       funcBody += char;
     }
     i++;
@@ -236,9 +248,10 @@ function interpretBrainF(code: string, input: string): string {
   };
   const hasInput = () => inputPointer < input.length;
   const outputChar = (char: string) => { output += char; };
+  const outputDebug = (num: number) => { output += num + ' '; };
   const incrementSteps = () => { steps++; return steps < maxSteps; };
 
-  const result = runFunction('mn', global, memory, limit, global, funcMap, getInputChar, hasInput, outputChar, incrementSteps);
+  const result = runFunction('mn', global, memory, limit, global, funcMap, getInputChar, hasInput, outputChar, outputDebug, incrementSteps);
   
   if (result === -1) {
     return output || 'ERROR: execution failed';
@@ -261,6 +274,7 @@ function runFunction(
   getInputChar: () => number,
   hasInput: () => boolean,
   outputChar: (char: string) => void,
+  outputDebug: (num: number) => void,
   incrementSteps: () => boolean
 ): number {
   const operations = funcMap.get(name);
@@ -294,7 +308,7 @@ function runFunction(
 
       case '<':
         if (cellPointer === startIndex) {
-          cellPointer = global;
+          cellPointer = global - 1; // wrap to global cell (index 0)
         } else {
           cellPointer--;
         }
@@ -318,6 +332,10 @@ function runFunction(
         } else {
           memory[cellPointer] = 0;
         }
+        break;
+
+      case '"':
+        outputDebug(memory[cellPointer]);
         break;
 
       case '[':
@@ -371,6 +389,7 @@ function runFunction(
             getInputChar,
             hasInput,
             outputChar,
+            outputDebug,
             incrementSteps
           );
           
