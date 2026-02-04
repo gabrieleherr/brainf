@@ -21,12 +21,12 @@ export default function ContestPage() {
 
         {/* Current Contest */}
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-8 text-center text-4xl font-bold">Current Contest</h2>
+          <h2 className="mb-8 text-center text-4xl font-bold">Current contest</h2>
           <Card className="border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-purple-500/10">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle className="font-mono text-2xl">TBD Challenge</CardTitle>
-                <Badge className="bg-gray-500 font-mono text-black">COMING SOON</Badge>
+                <CardTitle className="font-mono text-2xl">TBD challenge</CardTitle>
+                <Badge className="bg-gray-500 font-mono text-black">Coming soon</Badge>
               </div>
               <CardDescription className="text-lg">
                 Contest details and dates to be announced
@@ -44,15 +44,15 @@ export default function ContestPage() {
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-cyan-400">TBD</div>
-                  <div className="text-sm text-muted-foreground">Prize Pool</div>
+                  <div className="text-sm text-muted-foreground">Prize pool</div>
                 </div>
               </div>
               <div className="flex justify-center gap-4 pt-4">
                 <Button size="lg" className="bg-cyan-500 font-mono text-black hover:bg-cyan-600" disabled>
-                  Join Contest
+                  Join contest
                 </Button>
                 <Button size="lg" variant="outline" className="bg-transparent font-mono" disabled>
-                  View Leaderboard
+                  View leaderboard
                 </Button>
               </div>
             </CardContent>
@@ -61,14 +61,14 @@ export default function ContestPage() {
 
         {/* Upcoming Contests */}
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-8 text-center text-4xl font-bold">Upcoming Contests</h2>
+          <h2 className="mb-8 text-center text-4xl font-bold">Upcoming contests</h2>
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="font-mono">TBD</CardTitle>
                   <Badge variant="outline" className="font-mono">
-                    UPCOMING
+                    Upcoming
                   </Badge>
                 </div>
                 <CardDescription>Contest details to be announced</CardDescription>
@@ -78,7 +78,7 @@ export default function ContestPage() {
                   More contests coming soon. Stay tuned for updates!
                 </p>
                 <Button variant="outline" className="w-full bg-transparent font-mono" disabled>
-                  Set Reminder
+                  Set reminder
                 </Button>
               </CardContent>
             </Card>
@@ -88,7 +88,7 @@ export default function ContestPage() {
                 <div className="flex items-center justify-between">
                   <CardTitle className="font-mono">TBD</CardTitle>
                   <Badge variant="outline" className="font-mono">
-                    UPCOMING
+                    Upcoming
                   </Badge>
                 </div>
                 <CardDescription>Contest details to be announced</CardDescription>
@@ -98,7 +98,7 @@ export default function ContestPage() {
                   More contests coming soon. Stay tuned for updates!
                 </p>
                 <Button variant="outline" className="w-full bg-transparent font-mono" disabled>
-                  Set Reminder
+                  Set reminder
                 </Button>
               </CardContent>
             </Card>
@@ -107,7 +107,7 @@ export default function ContestPage() {
 
         {/* Past Winners */}
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-8 text-center text-4xl font-bold">Hall of Fame</h2>
+          <h2 className="mb-8 text-center text-4xl font-bold">Hall of fame</h2>
           <div className="space-y-4">
             <Card className="bg-muted/20">
               <CardContent className="flex items-center justify-center p-6">
@@ -121,7 +121,7 @@ export default function ContestPage() {
 
         {/* Contest Rules */}
         <div className="mx-auto max-w-3xl">
-          <h2 className="mb-8 text-center text-4xl font-bold">Contest Rules</h2>
+          <h2 className="mb-8 text-center text-4xl font-bold">Contest rules</h2>
           <Card>
             <CardContent className="space-y-4 p-8">
               <div className="space-y-3 text-muted-foreground">

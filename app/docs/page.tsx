@@ -38,7 +38,7 @@ export default function DocsPage() {
           <TabsContent value="language" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Quick Reference</CardTitle>
+                <CardTitle>Quick reference</CardTitle>
                 <CardDescription>Essential BrainF++ commands</CardDescription>
               </CardHeader>
               <CardContent>
@@ -77,7 +77,7 @@ export default function DocsPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h4 className="mb-2 font-mono text-accent">Function Declaration</h4>
+                  <h4 className="mb-2 font-mono text-accent">Function declaration</h4>
                   <p className="mb-2 text-sm text-muted-foreground">
                     Functions are declared with curly braces. The syntax is <code className="font-mono text-primary">{'{ab code here}'}</code> where the two-letter function name immediately follows the opening brace, followed by the function code, then the closing brace.
                   </p>
@@ -90,7 +90,7 @@ export default function DocsPage() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-mono text-accent">Main Function</h4>
+                  <h4 className="mb-2 font-mono text-accent">Main function</h4>
                   <p className="mb-2 text-sm text-muted-foreground">
                     Execution always begins in the main function <code className="font-mono text-primary">{'{mn code here}'}</code>. Code outside of any function is ignored and does not execute.
                   </p>
@@ -103,7 +103,7 @@ export default function DocsPage() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-mono text-accent">Function Calls</h4>
+                  <h4 className="mb-2 font-mono text-accent">Function calls</h4>
                   <p className="mb-2 text-sm text-muted-foreground">
                     To call a function, use parentheses with the two-letter function name: <code className="font-mono text-primary">(ab)</code>. The current cell value is passed as input, and the return value replaces the current cell.
                   </p>
@@ -122,7 +122,7 @@ export default function DocsPage() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-mono text-accent">Return Values</h4>
+                  <h4 className="mb-2 font-mono text-accent">Return values</h4>
                   <p className="mb-2 text-sm text-muted-foreground">
                     Use the semicolon <code className="font-mono text-primary">;</code> command to return a value from a function. The current cell value is returned and replaces the cell value at the call site.
                   </p>
@@ -135,7 +135,7 @@ export default function DocsPage() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-mono text-accent">Complete Example</h4>
+                  <h4 className="mb-2 font-mono text-accent">Complete example</h4>
                   <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
                     <span className="text-primary">{'{ab'}</span>
                     <span className="text-green-400">+++;</span>
@@ -154,7 +154,7 @@ export default function DocsPage() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Common Patterns</CardTitle>
+                <CardTitle>Common patterns</CardTitle>
                 <CardDescription>Useful code snippets and techniques</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -190,12 +190,12 @@ export default function DocsPage() {
           <TabsContent value="editor" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Editor Features</CardTitle>
+                <CardTitle>Editor features</CardTitle>
                 <CardDescription>How to use the online BrainF++ editor</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h4 className="mb-2 font-semibold">Running Code</h4>
+                  <h4 className="mb-2 font-semibold">Running code</h4>
                   <p className="text-sm text-muted-foreground">
                     Click the "Run" button to execute your BrainF++ code. The output will appear in
                     the console panel.
@@ -203,7 +203,7 @@ export default function DocsPage() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-semibold">Memory Visualization</h4>
+                  <h4 className="mb-2 font-semibold">Memory visualization</h4>
                   <p className="text-sm text-muted-foreground">
                     The Memory tab shows the current state of the memory array, with the data
                     pointer highlighted.
@@ -211,7 +211,7 @@ export default function DocsPage() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-semibold">Debug Information</h4>
+                  <h4 className="mb-2 font-semibold">Debug information</h4>
                   <p className="text-sm text-muted-foreground">
                     View execution statistics including step count, output length, and error
                     messages in the Debug tab.
@@ -219,7 +219,7 @@ export default function DocsPage() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-semibold">Example Programs</h4>
+                  <h4 className="mb-2 font-semibold">Example programs</h4>
                   <p className="text-sm text-muted-foreground">
                     Use the dropdown menu to load pre-written example programs and learn from
                     working code.
@@ -232,7 +232,7 @@ export default function DocsPage() {
           <TabsContent value="contests" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Contest Rules</CardTitle>
+                <CardTitle>Contest rules</CardTitle>
                 <CardDescription>How contests work on the platform</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

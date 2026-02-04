@@ -159,9 +159,9 @@ export function CodeEditor() {
       <div className="border-border border-b p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <h1 className="font-mono text-xl font-bold">BrainF++ Editor</h1>
+            <h1 className="font-mono text-xl font-bold">BrainF++ editor</h1>
             <Badge variant="secondary" className="font-mono">
-              Live Interpreter
+              Live interpreter
             </Badge>
           </div>
 
@@ -171,7 +171,7 @@ export function CodeEditor() {
               onChange={e => loadExample(e.target.value)}
               className="border-border bg-background rounded-md border px-3 py-1 font-mono text-sm"
             >
-              <option value="">Load Example...</option>
+              <option value="">Load example...</option>
               {Object.keys(examples).map(name => (
                 <option key={name} value={name}>
                   {name}
@@ -197,7 +197,7 @@ export function CodeEditor() {
         <div className="border-border flex flex-1 flex-col border-r">
           <div className="border-border border-b p-4">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="font-mono font-semibold">Code Editor</h2>
+              <h2 className="font-mono font-semibold">Code editor</h2>
               <div className="flex items-center gap-2">
                 <Button onClick={runCode} disabled={isRunning} size="sm" className="font-mono">
                   <Play className="mr-2 h-4 w-4" />
@@ -258,7 +258,7 @@ export function CodeEditor() {
             <TabsContent value="output" className="flex-1 p-4">
               <Card className="h-full">
                 <CardHeader>
-                  <CardTitle className="font-mono text-sm">Console Output</CardTitle>
+                  <CardTitle className="font-mono text-sm">Console output</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ScrollArea className="h-[400px]">
@@ -279,13 +279,13 @@ export function CodeEditor() {
             <TabsContent value="memory" className="flex-1 p-4">
               <Card className="h-full">
                 <CardHeader>
-                  <CardTitle className="font-mono text-sm">Memory Visualization</CardTitle>
+                  <CardTitle className="font-mono text-sm">Memory visualization</CardTitle>
                 </CardHeader>
                 <CardContent>
                   {executionResult ? (
                     <div className="space-y-4">
                       <div className="text-muted-foreground font-mono text-sm">
-                        Data Pointer: {executionResult.pointer}
+                        Data pointer: {executionResult.pointer}
                       </div>
                       <div className="grid grid-cols-10 gap-1">
                         {executionResult.memory.map((value, index) => (
@@ -317,23 +317,23 @@ export function CodeEditor() {
             <TabsContent value="debug" className="flex-1 p-4">
               <Card className="h-full">
                 <CardHeader>
-                  <CardTitle className="font-mono text-sm">Debug Information</CardTitle>
+                  <CardTitle className="font-mono text-sm">Debug information</CardTitle>
                 </CardHeader>
                 <CardContent>
                   {executionResult ? (
                     <div className="space-y-3 font-mono text-sm">
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Execution Steps:</span>
+                        <span className="text-muted-foreground">Execution steps:</span>
                         <span>{executionResult.steps.toLocaleString()}</span>
                       </div>
                       <Separator />
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Output Length:</span>
+                        <span className="text-muted-foreground">Output length:</span>
                         <span>{executionResult.output.length} characters</span>
                       </div>
                       <Separator />
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Memory Pointer:</span>
+                        <span className="text-muted-foreground">Memory pointer:</span>
                         <span>{executionResult.pointer}</span>
                       </div>
                       <Separator />

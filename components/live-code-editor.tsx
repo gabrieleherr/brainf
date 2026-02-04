@@ -83,7 +83,7 @@ export default function LiveCodeEditor() {
         <div className="space-y-4">
           {/* Code Editor */}
           <div>
-            <label className="mb-2 block text-sm font-medium">BrainF++ Code:</label>
+            <label className="mb-2 block text-sm font-medium">BrainF++ code:</label>
             <Textarea
               value={code}
               onChange={e => setCode(e.target.value)}
@@ -109,7 +109,7 @@ export default function LiveCodeEditor() {
             disabled={isRunning}
             className="w-full bg-cyan-500 font-mono text-black hover:bg-cyan-600"
           >
-            {isRunning ? 'Running...' : 'Run Code'}
+            {isRunning ? 'Running...' : 'Run code'}
           </Button>
         </div>
 

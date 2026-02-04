@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: 'BrainF++ - Minimalist Programming',
+  title: 'BrainF++ - minimalist programming',
   description: 'Master the art of BrainF++ programming',
 };
 

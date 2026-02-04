@@ -37,16 +37,18 @@ export default function HomePage() {
               size="lg"
               className="border-0 bg-cyan-500 font-mono text-black shadow-lg hover:bg-cyan-600"
             >
-              <a href="#editor">Try Online Editor</a>
+              <a href="#editor">Try online editor</a>
             </Button>
             <Button asChild size="lg" variant="outline" className="bg-transparent font-mono">
-              <a href="#commands">Learn the Commands</a>
+              <a href="#commands">Learn the commands</a>
             </Button>
           </div>
         </div>
 
         <div id="commands" className="mx-auto max-w-4xl scroll-mt-8">
-          <h3 className="mb-8 text-center text-4xl font-bold">Only eight commands</h3>
+          <h3 className="mb-8 text-center text-4xl font-bold">
+            Original BrainF: only eight commands
+          </h3>
           <div className="grid gap-4 md:grid-cols-2">
             {[
               { cmd: '>', desc: 'Move pointer right (baby steps)' },
@@ -57,7 +59,6 @@ export default function HomePage() {
               { cmd: ',', desc: 'Input ASCII to cell (feed me!)' },
               { cmd: '[', desc: 'Jump forward if cell is zero (maybe skip?)' },
               { cmd: ']', desc: "Jump back if cell is non-zero (let's loop!)" },
-              { cmd: ';', desc: 'Return value from function' },
             ].map(({ cmd, desc }) => (
               <Card key={cmd} className="bg-muted/50 transition-colors hover:bg-muted/70">
                 <CardContent className="flex items-center gap-4 p-4">
@@ -72,19 +73,24 @@ export default function HomePage() {
         </div>
 
         <div className="mx-auto max-w-4xl scroll-mt-8">
-          <h3 className="mb-8 text-center text-4xl font-bold">Functions in BrainF++</h3>
+          <h3 className="mb-8 text-center text-4xl font-bold">The ++ part: functions!</h3>
           <Card>
             <CardHeader>
-              <CardTitle>Function System</CardTitle>
-              <CardDescription>BrainF++ supports functions for code organization and reuse</CardDescription>
+              <CardTitle>Function system</CardTitle>
+              <CardDescription>
+                BrainF++ supports the advanced, modern and forward-looking concept of functions for
+                code organization and reuse.
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h4 className="mb-2 font-mono text-accent">Function Declaration</h4>
+                <h4 className="mb-2 font-mono text-accent">Function declaration</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  Functions are declared with curly braces. The syntax is <code className="font-mono text-primary">{'{mn code here}'}</code> where the two-letter function name immediately follows the opening brace.
+                  Functions are declared with curly braces. The syntax is{' '}
+                  <code className="font-mono text-primary">{'{mn code here}'}</code> where the
+                  two-letter function name immediately follows the opening brace.
                 </p>
-                <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 text-green-400">
+                <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
                   <span className="text-primary">{'{ab}'}</span>
                   <span className="text-green-400">+++.</span>
                   <span className="text-primary">{'}'}</span>
@@ -93,11 +99,13 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h4 className="mb-2 font-mono text-accent">Main Function</h4>
+                <h4 className="mb-2 font-mono text-accent">Main function</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  Execution always begins in the main function <code className="font-mono text-primary">{'{mn}'}</code>. Code outside of any function is ignored and does not execute.
+                  Execution always begins in the main function{' '}
+                  <code className="font-mono text-primary">{'{mn}'}</code>. Code outside of any
+                  function is ignored and does not execute.
                 </p>
-                <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 text-green-400">
+                <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
                   <span className="text-primary">{'{mn}'}</span>
                   <span className="text-green-400">+++.</span>
                   <span className="text-primary">{'}'}</span>
@@ -106,11 +114,13 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h4 className="mb-2 font-mono text-accent">Function Calls</h4>
+                <h4 className="mb-2 font-mono text-accent">Function calls</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  To call a function, use parentheses with the two-letter function name: <code className="font-mono text-primary">(ab)</code>. The current cell value is passed as input, and the return value replaces the current cell.
+                  To call a function, use parentheses with the two-letter function name:{' '}
+                  <code className="font-mono text-primary">(ab)</code>. The current cell value is
+                  passed as input, and the return value replaces the current cell.
                 </p>
-                <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 text-green-400">
+                <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
                   <span className="text-primary">{'{ab}'}</span>
                   <span className="text-green-400">+++;</span>
                   <span className="text-primary">{'}'}</span>
@@ -125,11 +135,13 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h4 className="mb-2 font-mono text-accent">Return Values</h4>
+                <h4 className="mb-2 font-mono text-accent">Return values</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  Use the semicolon <code className="font-mono text-primary">;</code> command to return a value from a function. The current cell value is returned and replaces the cell value at the call site.
+                  Use the semicolon <code className="font-mono text-primary">;</code> command to
+                  return a value from a function. The current cell value is returned and replaces
+                  the cell value at the call site.
                 </p>
-                <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 text-green-400">
+                <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
                   <span className="text-primary">{'{ab}'}</span>
                   <span className="text-green-400">++++++;</span>
                   <span className="text-primary">{'}'}</span>
