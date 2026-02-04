@@ -25,33 +25,33 @@ export default function ContestPage() {
           <Card className="border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-purple-500/10">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle className="font-mono text-2xl">December 2024 Challenge</CardTitle>
-                <Badge className="bg-green-500 font-mono text-black">LIVE</Badge>
+                <CardTitle className="font-mono text-2xl">TBD Challenge</CardTitle>
+                <Badge className="bg-gray-500 font-mono text-black">COMING SOON</Badge>
               </div>
               <CardDescription className="text-lg">
-                "The Fibonacci Fiasco" - Generate the first 10 Fibonacci numbers
+                Contest details and dates to be announced
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 text-center md:grid-cols-3">
                 <div>
-                  <div className="text-2xl font-bold text-cyan-400">47</div>
+                  <div className="text-2xl font-bold text-cyan-400">TBD</div>
                   <div className="text-sm text-muted-foreground">Participants</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-cyan-400">3d 14h</div>
-                  <div className="text-sm text-muted-foreground">Time Left</div>
+                  <div className="text-2xl font-bold text-cyan-400">TBD</div>
+                  <div className="text-sm text-muted-foreground">Date</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-cyan-400">$500</div>
+                  <div className="text-2xl font-bold text-cyan-400">TBD</div>
                   <div className="text-sm text-muted-foreground">Prize Pool</div>
                 </div>
               </div>
               <div className="flex justify-center gap-4 pt-4">
-                <Button size="lg" className="bg-cyan-500 font-mono text-black hover:bg-cyan-600">
+                <Button size="lg" className="bg-cyan-500 font-mono text-black hover:bg-cyan-600" disabled>
                   Join Contest
                 </Button>
-                <Button size="lg" variant="outline" className="bg-transparent font-mono">
+                <Button size="lg" variant="outline" className="bg-transparent font-mono" disabled>
                   View Leaderboard
                 </Button>
               </div>
@@ -66,18 +66,18 @@ export default function ContestPage() {
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="font-mono">January 2025</CardTitle>
+                  <CardTitle className="font-mono">TBD</CardTitle>
                   <Badge variant="outline" className="font-mono">
                     UPCOMING
                   </Badge>
                 </div>
-                <CardDescription>"The Sorting Nightmare" - Implement bubble sort</CardDescription>
+                <CardDescription>Contest details to be announced</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="mb-4 text-sm text-muted-foreground">
-                  Think sorting is hard in normal languages? Try it with just 8 commands!
+                  More contests coming soon. Stay tuned for updates!
                 </p>
-                <Button variant="outline" className="w-full bg-transparent font-mono">
+                <Button variant="outline" className="w-full bg-transparent font-mono" disabled>
                   Set Reminder
                 </Button>
               </CardContent>
@@ -86,18 +86,18 @@ export default function ContestPage() {
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="font-mono">February 2025</CardTitle>
+                  <CardTitle className="font-mono">TBD</CardTitle>
                   <Badge variant="outline" className="font-mono">
                     UPCOMING
                   </Badge>
                 </div>
-                <CardDescription>"Prime Time Panic" - Find all primes under 100</CardDescription>
+                <CardDescription>Contest details to be announced</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="mb-4 text-sm text-muted-foreground">
-                  Mathematical algorithms meet minimalist programming. What could go wrong?
+                  More contests coming soon. Stay tuned for updates!
                 </p>
-                <Button variant="outline" className="w-full bg-transparent font-mono">
+                <Button variant="outline" className="w-full bg-transparent font-mono" disabled>
                   Set Reminder
                 </Button>
               </CardContent>
@@ -109,39 +109,13 @@ export default function ContestPage() {
         <div className="mx-auto max-w-4xl">
           <h2 className="mb-8 text-center text-4xl font-bold">Hall of Fame</h2>
           <div className="space-y-4">
-            {[
-              {
-                month: 'November 2024',
-                challenge: 'Hello World Variations',
-                winner: 'CodeNinja42',
-                time: '23 minutes',
-              },
-              {
-                month: 'October 2024',
-                challenge: 'ASCII Art Generator',
-                winner: 'BrainMaster',
-                time: '1h 47m',
-              },
-              {
-                month: 'September 2024',
-                challenge: 'Calculator Challenge',
-                winner: 'MinimalCoder',
-                time: '2h 15m',
-              },
-            ].map((contest, i) => (
-              <Card key={i} className="bg-muted/20">
-                <CardContent className="flex items-center justify-between p-6">
-                  <div>
-                    <div className="font-mono font-bold">{contest.month}</div>
-                    <div className="text-sm text-muted-foreground">{contest.challenge}</div>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-mono font-bold text-cyan-400">{contest.winner}</div>
-                    <div className="text-sm text-muted-foreground">{contest.time}</div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            <Card className="bg-muted/20">
+              <CardContent className="flex items-center justify-center p-6">
+                <div className="text-center text-muted-foreground">
+                  No past contests yet. Winners will be displayed here after the first contest!
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
 

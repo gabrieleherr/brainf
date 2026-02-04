@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 export default function LiveCodeEditor() {
   const [code, setCode] = useState(
-    '++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.>+.+++.------.--------.>+.>+.',
+    '{mn++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.>+.+++.------.--------.>+.>+.}',
   );
   const [output, setOutput] = useState('');
   const [input, setInput] = useState('');
@@ -43,7 +43,7 @@ export default function LiveCodeEditor() {
           variant={selectedExample === 'Hello World' ? 'default' : 'outline'}
           onClick={() =>
             loadExample(
-              '+++++++++[>++++++++<-]>+.>++++++++++[>++++++++++<-]>+.+++++++..+++.>++++[>+++++++++++<-]>+.<<+++++++++++++++.>.+++.------.--------.>+.',
+              '{mn++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.>+.+++.------.--------.>+.>+.}',
               'Hello World',
             )
           }
@@ -54,7 +54,7 @@ export default function LiveCodeEditor() {
         <Button
           variant={selectedExample === 'Simple Hi' ? 'default' : 'outline'}
           onClick={() =>
-            loadExample('++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++.>+.', 'Simple Hi')
+            loadExample('{mn++++++++[>+++++++++<-]>.>++++[>++++++++<-]>+<[->+<]>.}', 'Simple Hi')
           }
           className="font-mono"
         >
@@ -62,7 +62,7 @@ export default function LiveCodeEditor() {
         </Button>
         <Button
           variant={selectedExample === 'ABC' ? 'default' : 'outline'}
-          onClick={() => loadExample('++++++++[>++++++++<-]>+.+.+.', 'ABC')}
+          onClick={() => loadExample('{mn++++++++[>++++++++<-]>+.+.+.}', 'ABC')}
           className="font-mono"
         >
           ABC
@@ -131,71 +131,284 @@ export default function LiveCodeEditor() {
   );
 }
 
-// Simple BrainF++ interpreter
+// BrainF++ interpreter matching Interpreter.java behavior
 function interpretBrainF(code: string, input: string): string {
-  const memory = new Array(30000).fill(0);
-  let pointer = 0;
-  let codePointer = 0;
+  const limit = 26; // total cells
+  const global = 1; // global variables
+  const memory = new Array(limit + global).fill(0);
+  const funcMap = new Map<string, string>();
   let inputPointer = 0;
   let output = '';
-  let steps = 0;
-  const maxSteps = 100000;
+  const maxSteps = 1000000;
+  let totalSteps = 0;
 
-  while (codePointer < code.length && steps < maxSteps) {
-    const command = code[codePointer];
-    steps++;
+  // Parse functions from code
+  let i = 0;
+  let funcName = '';
+  let funcBody = '';
+  let inFunc = false;
 
-    switch (command) {
-      case '>':
-        pointer = (pointer + 1) % memory.length;
-        break;
-      case '<':
-        pointer = (pointer - 1 + memory.length) % memory.length;
-        break;
-      case '+':
-        memory[pointer] = (memory[pointer] + 1) % 256;
-        break;
-      case '-':
-        memory[pointer] = (memory[pointer] - 1 + 256) % 256;
-        break;
-      case '.':
-        output += String.fromCharCode(memory[pointer]);
-        break;
-      case ',':
-        if (inputPointer < input.length) {
-          memory[pointer] = input.charCodeAt(inputPointer);
-          inputPointer++;
-        } else {
-          memory[pointer] = 0;
-        }
-        break;
-      case '[':
-        if (memory[pointer] === 0) {
-          let bracketCount = 1;
-          while (bracketCount > 0 && codePointer < code.length - 1) {
-            codePointer++;
-            if (code[codePointer] === '[') bracketCount++;
-            if (code[codePointer] === ']') bracketCount--;
-          }
-        }
-        break;
-      case ']':
-        if (memory[pointer] !== 0) {
-          let bracketCount = 1;
-          while (bracketCount > 0 && codePointer > 0) {
-            codePointer--;
-            if (code[codePointer] === ']') bracketCount++;
-            if (code[codePointer] === '[') bracketCount--;
-          }
-        }
-        break;
+  while (i < code.length) {
+    const char = code[i];
+    if (/\s/.test(char)) {
+      i++;
+      continue;
     }
-    codePointer++;
+
+    if (char === '{' && !inFunc) {
+      inFunc = true;
+      funcBody = '';
+      i++;
+      // Skip whitespace
+      while (i < code.length && /\s/.test(code[i])) i++;
+      if (i >= code.length || !/[a-zA-Z]/.test(code[i])) {
+        return 'ERROR: function name must be two letters';
+      }
+      funcName = code[i];
+      i++;
+      if (i >= code.length || !/[a-zA-Z]/.test(code[i])) {
+        return 'ERROR: function name must be two letters';
+      }
+      funcName += code[i];
+      i++;
+      continue;
+    }
+
+    if (char === '}' && inFunc) {
+      if (funcMap.has(funcName)) {
+        return `ERROR: function ${funcName} defined twice`;
+      }
+      funcMap.set(funcName, funcBody);
+      inFunc = false;
+      i++;
+      continue;
+    }
+
+    if (!inFunc) {
+      i++;
+      continue;
+    }
+
+    if (char === '(') {
+      i++;
+      // Skip whitespace
+      while (i < code.length && /\s/.test(code[i])) i++;
+      if (i >= code.length || !/[a-zA-Z]/.test(code[i])) {
+        return 'ERROR: function name must be two letters';
+      }
+      funcBody += code[i];
+      i++;
+      if (i >= code.length || !/[a-zA-Z]/.test(code[i])) {
+        return 'ERROR: function name must be two letters';
+      }
+      funcBody += code[i];
+      i++;
+      continue;
+    }
+
+    if (char === '{') {
+      return "ERROR: '{' found inside function declaration";
+    }
+
+    if (/[+\-\[\]<>.,;]/.test(char)) {
+      funcBody += char;
+    }
+    i++;
+  }
+
+  if (inFunc) {
+    return 'ERROR: unclosed function';
+  }
+
+  if (!funcMap.has('mn')) {
+    return 'ERROR: main function {mn} not found';
+  }
+
+  // Run main function
+  let steps = 0;
+  const getInputChar = () => {
+    if (inputPointer < input.length) {
+      const char = input.charCodeAt(inputPointer);
+      inputPointer++;
+      return char;
+    }
+    return 0;
+  };
+  const hasInput = () => inputPointer < input.length;
+  const outputChar = (char: string) => { output += char; };
+  const incrementSteps = () => { steps++; return steps < maxSteps; };
+
+  const result = runFunction('mn', global, memory, limit, global, funcMap, getInputChar, hasInput, outputChar, incrementSteps);
+  
+  if (result === -1) {
+    return output || 'ERROR: execution failed';
   }
 
   if (steps >= maxSteps) {
-    throw new Error('Program exceeded maximum execution steps (possible infinite loop)');
+    return output + '\nERROR: Program exceeded maximum execution steps';
   }
 
   return output;
+}
+
+function runFunction(
+  name: string,
+  startIndex: number,
+  memory: number[],
+  limit: number,
+  global: number,
+  funcMap: Map<string, string>,
+  getInputChar: () => number,
+  hasInput: () => boolean,
+  outputChar: (char: string) => void,
+  incrementSteps: () => boolean
+): number {
+  const operations = funcMap.get(name);
+  if (!operations) {
+    return -1;
+  }
+
+  let cellPointer = startIndex;
+  let maxPointer = startIndex;
+  let codePointer = 0;
+  const jumpIndexes: number[] = [];
+
+  while (codePointer < operations.length) {
+    if (!incrementSteps()) {
+      return -1;
+    }
+
+    const command = operations[codePointer];
+
+    switch (command) {
+      case ';':
+        return memory[cellPointer];
+
+      case '+':
+        memory[cellPointer]++;
+        break;
+
+      case '-':
+        memory[cellPointer]--;
+        break;
+
+      case '<':
+        if (cellPointer === startIndex) {
+          cellPointer = global;
+        } else {
+          cellPointer--;
+        }
+        break;
+
+      case '>':
+        if (cellPointer === global - 1) {
+          cellPointer = startIndex - 1;
+        }
+        cellPointer++;
+        maxPointer = Math.max(maxPointer, cellPointer);
+        break;
+
+      case '.':
+        outputChar(String.fromCharCode(memory[cellPointer]));
+        break;
+
+      case ',':
+        if (hasInput()) {
+          memory[cellPointer] = getInputChar();
+        } else {
+          memory[cellPointer] = 0;
+        }
+        break;
+
+      case '[':
+        if (memory[cellPointer] === 0) {
+          let runningTotal = 1;
+          while (runningTotal > 0 && codePointer < operations.length - 1) {
+            codePointer++;
+            if (operations[codePointer] === ']') runningTotal--;
+            else if (operations[codePointer] === '[') runningTotal++;
+          }
+          if (codePointer === operations.length - 1 && operations[codePointer] !== ']') {
+            return -1;
+          }
+        } else {
+          jumpIndexes.push(codePointer);
+        }
+        break;
+
+      case ']':
+        if (memory[cellPointer] !== 0) {
+          codePointer = jumpIndexes[jumpIndexes.length - 1];
+        } else {
+          jumpIndexes.pop();
+        }
+        break;
+
+      default:
+        // Function call - two letters
+        if (codePointer < operations.length - 1 && /[a-zA-Z]/.test(command) && /[a-zA-Z]/.test(operations[codePointer + 1])) {
+          const funcName = command + operations[codePointer + 1];
+          
+          // Find maxPointer (last non-zero cell)
+          while (maxPointer >= 0 && memory[maxPointer] === 0) maxPointer--;
+          if (maxPointer < cellPointer) maxPointer = cellPointer;
+          
+          if (maxPointer === limit - 1) {
+            return -1;
+          }
+
+          // Pass current cell value as input
+          memory[maxPointer + 1] = memory[cellPointer];
+          
+          // Call function
+          const returnValue = runFunction(
+            funcName,
+            maxPointer + 1,
+            memory,
+            limit,
+            global,
+            funcMap,
+            getInputChar,
+            hasInput,
+            outputChar,
+            incrementSteps
+          );
+          
+          if (returnValue === -1) return -1;
+          
+          // Replace current cell with return value
+          memory[cellPointer] = returnValue;
+          
+          // Clear memory after function call
+          for (let x = maxPointer + 1; x < limit; x++) {
+            memory[x] = 0;
+          }
+          
+          codePointer++; // Skip second letter
+        }
+        break;
+    }
+
+    codePointer++;
+
+    // Check bounds
+    if (cellPointer < 0 || cellPointer >= limit) {
+      return -1;
+    }
+
+    // Wrap negative values (like Java short wrapping)
+    // Java: memory[cellPointer] = (short) (Short.MAX_VALUE + memory[cellPointer] + 1);
+    if (memory[cellPointer] < 0) {
+      memory[cellPointer] = 32767 + memory[cellPointer] + 1;
+    }
+    // Wrap to 16-bit signed range
+    while (memory[cellPointer] > 32767) {
+      memory[cellPointer] -= 65536;
+    }
+    while (memory[cellPointer] < -32768) {
+      memory[cellPointer] += 65536;
+    }
+  }
+
+  return memory[cellPointer];
 }

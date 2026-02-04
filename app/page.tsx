@@ -57,6 +57,7 @@ export default function HomePage() {
               { cmd: ',', desc: 'Input ASCII to cell (feed me!)' },
               { cmd: '[', desc: 'Jump forward if cell is zero (maybe skip?)' },
               { cmd: ']', desc: "Jump back if cell is non-zero (let's loop!)" },
+              { cmd: ';', desc: 'Return value from function' },
             ].map(({ cmd, desc }) => (
               <Card key={cmd} className="bg-muted/50 transition-colors hover:bg-muted/70">
                 <CardContent className="flex items-center gap-4 p-4">
@@ -68,6 +69,75 @@ export default function HomePage() {
               </Card>
             ))}
           </div>
+        </div>
+
+        <div className="mx-auto max-w-4xl scroll-mt-8">
+          <h3 className="mb-8 text-center text-4xl font-bold">Functions in BrainF++</h3>
+          <Card>
+            <CardHeader>
+              <CardTitle>Function System</CardTitle>
+              <CardDescription>BrainF++ supports functions for code organization and reuse</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <h4 className="mb-2 font-mono text-accent">Function Declaration</h4>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  Functions are declared with curly braces. The syntax is <code className="font-mono text-primary">{'{mn code here}'}</code> where the two-letter function name immediately follows the opening brace.
+                </p>
+                <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 text-green-400">
+                  <span className="text-primary">{'{ab}'}</span>
+                  <span className="text-green-400">+++.</span>
+                  <span className="text-primary">{'}'}</span>
+                  <span className="ml-4 text-muted-foreground">// Function named "ab"</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-mono text-accent">Main Function</h4>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  Execution always begins in the main function <code className="font-mono text-primary">{'{mn}'}</code>. Code outside of any function is ignored and does not execute.
+                </p>
+                <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 text-green-400">
+                  <span className="text-primary">{'{mn}'}</span>
+                  <span className="text-green-400">+++.</span>
+                  <span className="text-primary">{'}'}</span>
+                  <span className="ml-4 text-muted-foreground">// Main function - this runs</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-mono text-accent">Function Calls</h4>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  To call a function, use parentheses with the two-letter function name: <code className="font-mono text-primary">(ab)</code>. The current cell value is passed as input, and the return value replaces the current cell.
+                </p>
+                <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 text-green-400">
+                  <span className="text-primary">{'{ab}'}</span>
+                  <span className="text-green-400">+++;</span>
+                  <span className="text-primary">{'}'}</span>
+                  <br />
+                  <span className="text-primary">{'{mn}'}</span>
+                  <span className="text-green-400">++</span>
+                  <span className="text-primary">(ab)</span>
+                  <span className="text-green-400">.</span>
+                  <span className="text-primary">{'}'}</span>
+                  <span className="ml-4 text-muted-foreground">// Calls function "ab"</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-mono text-accent">Return Values</h4>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  Use the semicolon <code className="font-mono text-primary">;</code> command to return a value from a function. The current cell value is returned and replaces the cell value at the call site.
+                </p>
+                <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 text-green-400">
+                  <span className="text-primary">{'{ab}'}</span>
+                  <span className="text-green-400">++++++;</span>
+                  <span className="text-primary">{'}'}</span>
+                  <span className="ml-4 text-muted-foreground">// Returns 6</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         <div className="mx-auto max-w-2xl">

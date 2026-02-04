@@ -52,6 +52,11 @@ export default function DocsPage() {
                     { cmd: ',', desc: 'Input character', example: ',' },
                     { cmd: '[', desc: 'Start loop', example: '[' },
                     { cmd: ']', desc: 'End loop', example: ']' },
+                    { cmd: ';', desc: 'Return value from function', example: ';' },
+                    { cmd: '{', desc: 'Start function declaration', example: '{mn' },
+                    { cmd: '}', desc: 'End function declaration', example: '}' },
+                    { cmd: '(', desc: 'Start function call', example: '(ab' },
+                    { cmd: ')', desc: 'End function call', example: ')' },
                   ].map(({ cmd, desc, example }) => (
                     <div key={cmd} className="flex gap-3 rounded-lg bg-muted p-3">
                       <span className="w-6 font-mono text-lg font-bold text-primary">{cmd}</span>
@@ -61,6 +66,88 @@ export default function DocsPage() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Functions</CardTitle>
+                <CardDescription>BrainF++ function system</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <h4 className="mb-2 font-mono text-accent">Function Declaration</h4>
+                  <p className="mb-2 text-sm text-muted-foreground">
+                    Functions are declared with curly braces. The syntax is <code className="font-mono text-primary">{'{ab code here}'}</code> where the two-letter function name immediately follows the opening brace, followed by the function code, then the closing brace.
+                  </p>
+                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                    <span className="text-primary">{'{ab'}</span>
+                    <span className="text-green-400">+++.</span>
+                    <span className="text-primary">{'}'}</span>
+                    <span className="ml-4 text-muted-foreground">// Function named "ab"</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="mb-2 font-mono text-accent">Main Function</h4>
+                  <p className="mb-2 text-sm text-muted-foreground">
+                    Execution always begins in the main function <code className="font-mono text-primary">{'{mn code here}'}</code>. Code outside of any function is ignored and does not execute.
+                  </p>
+                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                    <span className="text-primary">{'{mn'}</span>
+                    <span className="text-green-400">+++.</span>
+                    <span className="text-primary">{'}'}</span>
+                    <span className="ml-4 text-muted-foreground">// Main function - this runs</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="mb-2 font-mono text-accent">Function Calls</h4>
+                  <p className="mb-2 text-sm text-muted-foreground">
+                    To call a function, use parentheses with the two-letter function name: <code className="font-mono text-primary">(ab)</code>. The current cell value is passed as input, and the return value replaces the current cell.
+                  </p>
+                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                    <span className="text-primary">{'{ab'}</span>
+                    <span className="text-green-400">+++;</span>
+                    <span className="text-primary">{'}'}</span>
+                    <br />
+                    <span className="text-primary">{'{mn'}</span>
+                    <span className="text-green-400">++</span>
+                    <span className="text-primary">(ab)</span>
+                    <span className="text-green-400">.</span>
+                    <span className="text-primary">{'}'}</span>
+                    <span className="ml-4 text-muted-foreground">// Calls function "ab"</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="mb-2 font-mono text-accent">Return Values</h4>
+                  <p className="mb-2 text-sm text-muted-foreground">
+                    Use the semicolon <code className="font-mono text-primary">;</code> command to return a value from a function. The current cell value is returned and replaces the cell value at the call site.
+                  </p>
+                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                    <span className="text-primary">{'{ab'}</span>
+                    <span className="text-green-400">++++++;</span>
+                    <span className="text-primary">{'}'}</span>
+                    <span className="ml-4 text-muted-foreground">// Returns 6</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="mb-2 font-mono text-accent">Complete Example</h4>
+                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                    <span className="text-primary">{'{ab'}</span>
+                    <span className="text-green-400">+++;</span>
+                    <span className="text-primary">{'}'}</span>
+                    <br />
+                    <span className="text-primary">{'{mn'}</span>
+                    <span className="text-green-400">++</span>
+                    <span className="text-primary">(ab)</span>
+                    <span className="text-green-400">.</span>
+                    <span className="text-primary">{'}'}</span>
+                    <span className="ml-4 text-muted-foreground">// Sets cell to 2, calls ab (adds 3), outputs 5</span>
+                  </div>
                 </div>
               </CardContent>
             </Card>
