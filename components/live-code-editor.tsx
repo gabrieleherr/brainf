@@ -9,18 +9,10 @@ import { useState } from 'react';
 function helloWorldExample(): string {
   return (
     '{mn' +
-    '+'.repeat(72) + '.>' +
-    '+'.repeat(101) + '.>' +
-    '+'.repeat(108) + '.>' +
-    '+'.repeat(108) + '.>' +
-    '+'.repeat(111) + '.>' +
-    '+'.repeat(32) + '.>' +
-    '+'.repeat(87) + '.>' +
-    '+'.repeat(111) + '.>' +
-    '+'.repeat(114) + '.>' +
-    '+'.repeat(108) + '.>' +
-    '+'.repeat(100) + '.>' +
-    '+'.repeat(33) + '.}'
+    '+'.repeat(10) + '[>+++++++>++++++++++>+++<<<-]' +
+    '>++.>+.+++++++..+++.>++.' +
+    '<<+++++++++++++++.>.+++.------.--------.>+.>+.' +
+    '}'
   );
 }
 
@@ -66,30 +58,35 @@ export default function LiveCodeEditor() {
           Hello World
         </Button>
         <Button
-          variant={selectedExample === 'Simple Hi' ? 'default' : 'outline'}
+          variant={selectedExample === 'Input' ? 'default' : 'outline'}
+          onClick={() => loadExample('// prints 5 more than the ascii value of the input\n{mn ,+++++.}', 'Input')}
+          className="font-mono"
+        >
+          Input
+        </Button>
+        <Button
+          variant={selectedExample === 'If Statement' ? 'default' : 'outline'}
           onClick={() =>
             loadExample(
-              '{mn++++++++[>+++++++++<-]>.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.}',
-              'Simple Hi',
+              '// if the input is \'6\' print \'7\'\n// otherwise print the input\n{mn +++++++++[->++++++>++++++<<] ,>[-<->]< (fn) >>[-<<+>>]<< .}\n// if cell is nonzero return cell, else return cell+1\n{fn [;] +}',
+              'If Statement',
             )
           }
           className="font-mono"
         >
-          Simple Hi
+          If Statement
         </Button>
         <Button
-          variant={selectedExample === 'ABC' ? 'default' : 'outline'}
-          onClick={() => loadExample('{mn++++++++[>++++++++<-]>+.+.+.}', 'ABC')}
+          variant={selectedExample === 'Recursion' ? 'default' : 'outline'}
+          onClick={() =>
+            loadExample(
+              '// calculates 2^i for some input i\n{mn <++++++++[->++++++<] ,>[-<->]< (fn)"}\n// if global cell is nonzero return 2^(i-1) * 2, else return 1\n{fn [-]< [->(fn)[->++<]>;] >+}',
+              'Recursion',
+            )
+          }
           className="font-mono"
         >
-          ABC
-        </Button>
-        <Button
-          variant={selectedExample === 'Sample' ? 'default' : 'outline'}
-          onClick={() => loadExample('{mn ,+++++.}', 'Sample')}
-          className="font-mono"
-        >
-          Sample (input+5)
+          Recursion
         </Button>
         <Button
           variant="outline"

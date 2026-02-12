@@ -43,6 +43,21 @@ export default function HomePage() {
               <a href="#commands">Learn the commands</a>
             </Button>
           </div>
+
+          <div className="mb-8 rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 p-6">
+            <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
+              Tired of dealing with time constraints on algorithms in programming contests? How about memory constraints? Sign up for the contest here and join the select group of people who like making things unnecessarily complicated.
+            </p>
+            <div className="flex justify-center gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="border-0 bg-cyan-500 font-mono text-black shadow-lg hover:bg-cyan-600"
+              >
+                <a href="/contest">Sign up for the contest</a>
+              </Button>
+            </div>
+          </div>
         </div>
 
         <div id="commands" className="mx-auto max-w-4xl scroll-mt-8">
@@ -51,14 +66,14 @@ export default function HomePage() {
           </h3>
           <div className="grid gap-4 md:grid-cols-2">
             {[
-              { cmd: '>', desc: 'Move pointer right (baby steps)' },
-              { cmd: '<', desc: 'Move pointer left (oops, went too far)' },
-              { cmd: '+', desc: 'Increment cell value (counting up!)' },
-              { cmd: '-', desc: 'Decrement cell value (counting down!)' },
-              { cmd: '.', desc: 'Output cell value as ASCII (ta-da!)' },
-              { cmd: ',', desc: 'Input ASCII to cell (feed me!)' },
-              { cmd: '[', desc: 'Jump forward if cell is zero (maybe skip?)' },
-              { cmd: ']', desc: "Jump back if cell is non-zero (let's loop!)" },
+              { cmd: '>', desc: 'Move pointer right' },
+              { cmd: '<', desc: 'Move pointer left' },
+              { cmd: '+', desc: 'Increment cell value' },
+              { cmd: '-', desc: 'Decrement cell value' },
+              { cmd: '.', desc: 'Output cell value as ASCII or Unicode' },
+              { cmd: ',', desc: 'Input ASCII or Unicode to cell' },
+              { cmd: '[', desc: 'Jump forward if cell is zero' },
+              { cmd: ']', desc: 'Jump back if cell is non-zero' },
             ].map(({ cmd, desc }) => (
               <Card key={cmd} className="bg-muted/50 transition-colors hover:bg-muted/70">
                 <CardContent className="flex items-center gap-4 p-4">
@@ -84,68 +99,92 @@ export default function HomePage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h4 className="mb-2 font-mono text-accent">Function declaration</h4>
+                <h4 className="mb-2 font-mono text-cyan-400">Function declaration</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
                   Functions are declared with curly braces. The syntax is{' '}
-                  <code className="font-mono text-primary">{'{mn code here}'}</code> where the
+                  <code className="font-mono text-cyan-400">{'{mn code here}'}</code> where the
                   two-letter function name immediately follows the opening brace.
                 </p>
                 <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
-                  <span className="text-primary">{'{ab}'}</span>
+                  <span className="text-cyan-400">{'{ab'}</span>
                   <span className="text-green-400">+++.</span>
-                  <span className="text-primary">{'}'}</span>
+                  <span className="text-cyan-400">{'}'}</span>
                   <span className="ml-4 text-muted-foreground">// Function named "ab"</span>
                 </div>
               </div>
 
               <div>
-                <h4 className="mb-2 font-mono text-accent">Main function</h4>
+                <h4 className="mb-2 font-mono text-cyan-400">Main function</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
                   Execution always begins in the main function{' '}
-                  <code className="font-mono text-primary">{'{mn}'}</code>. Code outside of any
+                  <code className="font-mono text-cyan-400">{'{mn}'}</code>. Code outside of any
                   function is ignored and does not execute.
                 </p>
                 <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
-                  <span className="text-primary">{'{mn}'}</span>
+                  <span className="text-cyan-400">{'{mn'}</span>
                   <span className="text-green-400">+++.</span>
-                  <span className="text-primary">{'}'}</span>
+                  <span className="text-cyan-400">{'}'}</span>
                   <span className="ml-4 text-muted-foreground">// Main function - this runs</span>
                 </div>
               </div>
 
               <div>
-                <h4 className="mb-2 font-mono text-accent">Function calls</h4>
+                <h4 className="mb-2 font-mono text-cyan-400">Return values</h4>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  Use the semicolon <code className="font-mono text-cyan-400">;</code> command to
+                  return a value from a function. The current cell value is returned and replaces
+                  the cell value at the call site.
+                </p>
+                <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
+                  <span className="text-cyan-400">{'{ab'}</span>
+                  <span className="text-green-400">++++++;</span>
+                  <span className="text-cyan-400">{'}'}</span>
+                  <span className="ml-4 text-muted-foreground">// Returns 6</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="mb-2 font-mono text-cyan-400">Function calls</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
                   To call a function, use parentheses with the two-letter function name:{' '}
-                  <code className="font-mono text-primary">(ab)</code>. The current cell value is
+                  <code className="font-mono text-cyan-400">(ab)</code>. The current cell value is
                   passed as input, and the return value replaces the current cell.
                 </p>
                 <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
-                  <span className="text-primary">{'{ab}'}</span>
+                  <span className="text-cyan-400">{'{ab'}</span>
                   <span className="text-green-400">+++;</span>
-                  <span className="text-primary">{'}'}</span>
+                  <span className="text-cyan-400">{'}'}</span>
                   <br />
-                  <span className="text-primary">{'{mn}'}</span>
+                  <span className="text-cyan-400">{'{mn'}</span>
                   <span className="text-green-400">++</span>
-                  <span className="text-primary">(ab)</span>
+                  <span className="text-cyan-400">(ab)</span>
                   <span className="text-green-400">.</span>
-                  <span className="text-primary">{'}'}</span>
+                  <span className="text-cyan-400">{'}'}</span>
                   <span className="ml-4 text-muted-foreground">// Calls function "ab"</span>
                 </div>
               </div>
 
               <div>
-                <h4 className="mb-2 font-mono text-accent">Return values</h4>
+                <h4 className="mb-2 font-mono text-cyan-400">Global cells</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  Use the semicolon <code className="font-mono text-primary">;</code> command to
-                  return a value from a function. The current cell value is returned and replaces
-                  the cell value at the call site.
+                  Global cells are cells which are accessible to the left of the starting cell. They are static across all function calls.
+                </p>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  The ab function decreases the global variable and returns 1 if it is positive, the mn function goes to the next cell as long as this value is positive. Overall, the program moves right the inputted number of times.
                 </p>
                 <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
-                  <span className="text-primary">{'{ab}'}</span>
-                  <span className="text-green-400">++++++;</span>
-                  <span className="text-primary">{'}'}</span>
-                  <span className="ml-4 text-muted-foreground">// Returns 6</span>
+                  <span className="text-cyan-400">{'{ab'}</span>
+                  <span className="text-green-400">[-]&lt;-</span>
+                  <span className="text-cyan-400">[</span>
+                  <span className="text-green-400">&gt;+;</span>
+                  <span className="text-cyan-400">]}</span>
+                  <br />
+                  <span className="text-cyan-400">{'{mn'}</span>
+                  <span className="text-green-400">&lt;.&gt;+</span>
+                  <span className="text-cyan-400">[</span>
+                  <span className="text-green-400">&gt;</span>
+                  <span className="text-cyan-400">(ab)</span>
+                  <span className="text-cyan-400">]}</span>
                 </div>
               </div>
             </CardContent>
@@ -164,60 +203,49 @@ export default function HomePage() {
             <CardContent className="space-y-4">
               <div className="overflow-x-auto rounded-lg bg-black/90 p-6 font-mono text-sm">
                 <div className="leading-relaxed whitespace-nowrap text-green-400">
-                  ++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]
+                  ++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&lt;&lt;&lt;-]
                   <br />
                   &gt;++.&gt;+.+++++++..+++.&gt;++.
                   <br />
-                  &lt;&lt;+++++++++++++++.&gt;.&gt;+.+++.------.--------.&gt;+.&gt;+.
+                  &lt;&lt;+++++++++++++++.&gt;.+++.------.--------.&gt;+.&gt;+.
                 </div>
               </div>
               <div className="space-y-3 text-sm text-muted-foreground">
                 <p>
                   <strong className="text-cyan-400">
-                    What's happening here? (Spoiler: it's complicated)
+                    Line by line explanations:
                   </strong>
                 </p>
                 <div className="space-y-2 pl-4">
                   <p>
-                    <span className="font-mono text-green-400">++++++++++</span> - Count to 10
-                    (we're off to a great start!)
+                    <span className="font-mono text-green-400">++++++++++</span> - Count to 10 (off to a great start!)
                   </p>
                   <p>
                     <span className="font-mono text-green-400">
-                      [&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]
+                      [&gt;+++++++&gt;++++++++++&gt;+++&lt;&lt;&lt;-]
                     </span>{' '}
-                    - The magic loop that sets up our ASCII values (don't ask how long this took to
-                    figure out)
+                    - The magic loop that sets up our ASCII values: 70 in cell 2, 100 in cell 3, and 30 in cell 4
                   </p>
                   <p>
-                    <span className="font-mono text-green-400">&gt;++.</span> - Move right, add 2,
-                    output 'H' (we did it!)
+                    <span className="font-mono text-green-400">&gt;++.</span> - Move to cell 2, add 2, output 72 = 'H'
                   </p>
                   <p>
-                    <span className="font-mono text-green-400">&gt;+.</span> - Move right, add 1,
-                    output 'e' (getting the hang of this)
+                    <span className="font-mono text-green-400">&gt;+.</span> - Move to cell 3, add 1, output 101='e'
                   </p>
                   <p>
-                    <span className="font-mono text-green-400">+++++++.</span> - Add 7, output 'l'
-                    (math is hard)
+                    <span className="font-mono text-green-400">+++++++.</span> - Add 7, output 108='l'
                   </p>
                   <p>
                     <span className="font-mono text-green-400">.</span> - Output another 'l'
-                    (copy-paste doesn't exist here)
                   </p>
                   <p>
-                    <span className="font-mono text-green-400">+++.</span> - Add 3, output 'o'
-                    (almost there!)
+                    <span className="font-mono text-green-400">+++.</span> - Add 3, output 111='o' (almost there!)
                   </p>
-                  <p>...and the rest is just more ASCII arithmetic wizardry ✨</p>
+                  <p>
+                    <span className="font-mono text-green-400">&gt;++.</span> - Move to cell 4, add 2, output 32=' '
+                  </p>
+                  <p>...and the rest is just more ASCII arithmetic suffering 🌞</p>
                 </div>
-                <p>
-                  <strong className="text-cyan-400">The secret sauce:</strong> We're basically doing
-                  manual ASCII math because apparently using a string literal is for weaklings. Each
-                  character requires calculating its exact ASCII value through addition and
-                  subtraction. It's like solving a puzzle where the reward is... well, "Hello
-                  World!"
-                </p>
               </div>
             </CardContent>
           </Card>
@@ -272,7 +300,7 @@ export default function HomePage() {
               So he created BrainF++, a language so minimal it makes assembly look verbose. It's
               proof that you can make programmers cry with just 8 characters. Despite being designed
               as a challenge to create the smallest possible compiler, it accidentally became a rite
-              of passage for masochistic programmers everywhere. 🧠💀
+              of passage for masochistic programmers everywhere.
             </p>
           </div>
         </div>
