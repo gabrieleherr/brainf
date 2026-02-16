@@ -79,9 +79,12 @@ export default function DocsPage() {
                 <div>
                   <h4 className="mb-2 font-mono text-cyan-400">Function declaration</h4>
                   <p className="mb-2 text-sm text-muted-foreground">
-                    Functions are declared with curly braces. The syntax is <code className="font-mono text-cyan-400">{'{ab code here}'}</code> where the two-letter function name immediately follows the opening brace, followed by the function code, then the closing brace.
+                    Functions are declared with curly braces. The syntax is{' '}
+                    <code className="font-mono text-cyan-400">{'{ab code here}'}</code> where the
+                    two-letter function name immediately follows the opening brace, followed by the
+                    function code, then the closing brace.
                   </p>
-                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                  <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm">
                     <span className="text-cyan-400">{'{ab'}</span>
                     <span className="text-green-400">+++.</span>
                     <span className="text-cyan-400">{'}'}</span>
@@ -92,9 +95,11 @@ export default function DocsPage() {
                 <div>
                   <h4 className="mb-2 font-mono text-cyan-400">Main function</h4>
                   <p className="mb-2 text-sm text-muted-foreground">
-                    Execution always begins in the main function <code className="font-mono text-cyan-400">{'{mn code here}'}</code>. Code outside of any function is ignored and does not execute.
+                    Execution always begins in the main function{' '}
+                    <code className="font-mono text-cyan-400">{'{mn code here}'}</code>. Code
+                    outside of any function is ignored and does not execute.
                   </p>
-                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                  <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm">
                     <span className="text-cyan-400">{'{mn'}</span>
                     <span className="text-green-400">+++.</span>
                     <span className="text-cyan-400">{'}'}</span>
@@ -105,9 +110,11 @@ export default function DocsPage() {
                 <div>
                   <h4 className="mb-2 font-mono text-cyan-400">Return values</h4>
                   <p className="mb-2 text-sm text-muted-foreground">
-                    Use the semicolon <code className="font-mono text-cyan-400">;</code> command to return a value from a function. The current cell value is returned and replaces the cell value at the call site.
+                    Use the semicolon <code className="font-mono text-cyan-400">;</code> command to
+                    return a value from a function. The current cell value is returned and replaces
+                    the cell value at the call site.
                   </p>
-                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                  <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm">
                     <span className="text-cyan-400">{'{ab'}</span>
                     <span className="text-green-400">++++++;</span>
                     <span className="text-cyan-400">{'}'}</span>
@@ -118,9 +125,11 @@ export default function DocsPage() {
                 <div>
                   <h4 className="mb-2 font-mono text-cyan-400">Function calls</h4>
                   <p className="mb-2 text-sm text-muted-foreground">
-                    To call a function, use parentheses with the two-letter function name: <code className="font-mono text-cyan-400">(ab)</code>. The current cell value is passed as input, and the return value replaces the current cell.
+                    To call a function, use parentheses with the two-letter function name:{' '}
+                    <code className="font-mono text-cyan-400">(ab)</code>. The current cell value is
+                    passed as input, and the return value replaces the current cell.
                   </p>
-                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                  <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm">
                     <span className="text-cyan-400">{'{ab'}</span>
                     <span className="text-green-400">+++;</span>
                     <span className="text-cyan-400">{'}'}</span>
@@ -137,32 +146,39 @@ export default function DocsPage() {
                 <div>
                   <h4 className="mb-2 font-mono text-cyan-400">Global cells</h4>
                   <p className="mb-2 text-sm text-muted-foreground">
-                    Global cells are cells which are accessible to the left of the starting cell. They are static across all function calls.
+                    Global cells are cells which are accessible to the left of the starting cell.
+                    They are static across all function calls.
                   </p>
-                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90">
+                  <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm">
                     <span className="text-cyan-400">{'{ab'}</span>
                     <span className="text-green-400">&lt;-</span>
                     <span className="text-cyan-400">[</span>
                     <span className="text-green-400">&gt;+;</span>
-                    <span className="text-cyan-400">]}</span>
-                    <span className="ml-4 text-muted-foreground">// Returns 1 if the global cell is &gt;0, 0 otherwise</span>
+                    <span className="text-cyan-400">{']}'}</span>
+                    <span className="ml-4 text-muted-foreground">
+                      // Returns 1 if the global cell is &gt;0, 0 otherwise
+                    </span>
                   </div>
-                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 mt-2">
+                  <div className="code-block mt-2 rounded-lg bg-black/90 p-3 font-mono text-sm">
                     <span className="text-cyan-400">{'{ab'}</span>
                     <span className="text-green-400">&lt;-</span>
                     <span className="text-cyan-400">[</span>
                     <span className="text-green-400">&gt;+;</span>
-                    <span className="text-cyan-400">]}</span>
-                    <span className="ml-4 text-muted-foreground">// Decrements global cell, returns 1 if it is positive</span>
-                  </div>
-                  <div className="code-block rounded-lg p-3 font-mono text-sm bg-black/90 mt-2">
-                    <span className="text-cyan-400">{'{mn'}</span>
-                    <span className="text-green-400">&lt;.&gt;+</span>
-                    <span className="text-cyan-400">[</span>
-                    <span className="text-green-400">&gt;</span>
-                    <span className="text-cyan-400">(ab)</span>
-                    <span className="text-cyan-400">]}</span>
-                    <span className="ml-4 text-muted-foreground">// Moves right the inputted number of times</span>
+                    <span className="text-cyan-400">{']}'}</span>
+                    <span className="ml-4 text-muted-foreground">
+                      // Decrements global cell, returns 1 if it is positive
+                    </span>
+                    <div>
+                      <span className="text-cyan-400">{'{mn'}</span>
+                      <span className="text-green-400">&lt;.&gt;+</span>
+                      <span className="text-cyan-400">[</span>
+                      <span className="text-green-400">&gt;</span>
+                      <span className="text-cyan-400">(ab)</span>
+                      <span className="text-cyan-400">{']}'}</span>
+                      <span className="ml-4 text-muted-foreground">
+                        // Moves right the inputted number of times
+                      </span>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -178,7 +194,9 @@ export default function DocsPage() {
                   <h4 className="mb-2 font-mono text-cyan-400">Go to next empty cell</h4>
                   <div className="code-block rounded-lg p-3 font-mono text-sm">
                     <span className="text-primary">[&gt;]</span>
-                    <span className="ml-4 text-muted-foreground">// Goes to the next empty cell</span>
+                    <span className="ml-4 text-muted-foreground">
+                      // Goes to the next empty cell
+                    </span>
                   </div>
                 </div>
 
@@ -194,15 +212,21 @@ export default function DocsPage() {
                   <h4 className="mb-2 font-mono text-cyan-400">Transfer cell to next cell</h4>
                   <div className="code-block rounded-lg p-3 font-mono text-sm">
                     <span className="text-primary">[-&gt;+&lt;]</span>
-                    <span className="ml-4 text-muted-foreground">// Transfers a cell to the next cell (or adds it to the next cell)</span>
+                    <span className="ml-4 text-muted-foreground">
+                      // Transfers a cell to the next cell (or adds it to the next cell)
+                    </span>
                   </div>
                 </div>
 
                 <div>
                   <h4 className="mb-2 font-mono text-cyan-400">Duplicate cell to next cell</h4>
                   <div className="code-block rounded-lg p-3 font-mono text-sm">
-                    <span className="text-primary">[-&gt;+&gt;+&lt;&lt;] &gt;&gt;[&lt;&lt;+&gt;&gt;-]</span>
-                    <span className="ml-4 text-muted-foreground">// Duplicates a cell to the next cell</span>
+                    <span className="text-primary">
+                      [-&gt;+&gt;+&lt;&lt;] &gt;&gt;[&lt;&lt;+&gt;&gt;-]
+                    </span>
+                    <span className="ml-4 text-muted-foreground">
+                      // Duplicates a cell to the next cell
+                    </span>
                   </div>
                 </div>
 
@@ -210,7 +234,10 @@ export default function DocsPage() {
                   <h4 className="mb-2 font-mono text-cyan-400">Conditional function call</h4>
                   <div className="code-block rounded-lg p-3 font-mono text-sm">
                     <span className="text-primary">[(AB);](ab)</span>
-                    <span className="ml-4 text-muted-foreground">// Does function AB if the current cell is nonzero but function ab if current cell is zero</span>
+                    <span className="ml-4 text-muted-foreground">
+                      // Does function AB if the current cell is nonzero but function ab if current
+                      cell is zero
+                    </span>
                   </div>
                 </div>
 
@@ -218,7 +245,9 @@ export default function DocsPage() {
                   <h4 className="mb-2 font-mono text-cyan-400">Conditional return</h4>
                   <div className="code-block rounded-lg p-3 font-mono text-sm">
                     <span className="text-primary">[;]</span>
-                    <span className="ml-4 text-muted-foreground">// Returns the value of a function if it is not 0</span>
+                    <span className="ml-4 text-muted-foreground">
+                      // Returns the value of a function if it is not 0
+                    </span>
                   </div>
                 </div>
               </CardContent>
