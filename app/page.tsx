@@ -46,7 +46,9 @@ export default function HomePage() {
 
           <div className="mb-8 rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 p-6">
             <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
-              Tired of dealing with time constraints on algorithms in programming contests? How about memory constraints? Sign up for the contest here and join the select group of people who like making things unnecessarily complicated.
+              Tired of dealing with time constraints on algorithms in programming contests? How
+              about memory constraints? Sign up for the contest here and join the select group of
+              people who like making things unnecessarily complicated.
             </p>
             <div className="flex justify-center gap-4">
               <Button
@@ -167,24 +169,27 @@ export default function HomePage() {
               <div>
                 <h4 className="mb-2 font-mono text-cyan-400">Global cells</h4>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  Global cells are cells which are accessible to the left of the starting cell. They are static across all function calls.
+                  Global cells are cells which are accessible to the left of the starting cell. They
+                  are static across all function calls.
                 </p>
                 <p className="mb-2 text-sm text-muted-foreground">
-                  The ab function decreases the global variable and returns 1 if it is positive, the mn function goes to the next cell as long as this value is positive. Overall, the program moves right the inputted number of times.
+                  The ab function decreases the global variable and returns 1 if it is positive, the
+                  mn function goes to the next cell as long as this value is positive. Overall, the
+                  program moves right the inputted number of times.
                 </p>
                 <div className="code-block rounded-lg bg-black/90 p-3 font-mono text-sm text-green-400">
                   <span className="text-cyan-400">{'{ab'}</span>
                   <span className="text-green-400">[-]&lt;-</span>
                   <span className="text-cyan-400">[</span>
                   <span className="text-green-400">&gt;+;</span>
-                  <span className="text-cyan-400">]}</span>
+                  <span className="text-cyan-400">{']}'}</span>
                   <br />
                   <span className="text-cyan-400">{'{mn'}</span>
                   <span className="text-green-400">&lt;.&gt;+</span>
                   <span className="text-cyan-400">[</span>
                   <span className="text-green-400">&gt;</span>
                   <span className="text-cyan-400">(ab)</span>
-                  <span className="text-cyan-400">]}</span>
+                  <span className="text-cyan-400">{']}'}</span>
                 </div>
               </div>
             </CardContent>
@@ -212,37 +217,42 @@ export default function HomePage() {
               </div>
               <div className="space-y-3 text-sm text-muted-foreground">
                 <p>
-                  <strong className="text-cyan-400">
-                    Line by line explanations:
-                  </strong>
+                  <strong className="text-cyan-400">Line by line explanations:</strong>
                 </p>
                 <div className="space-y-2 pl-4">
                   <p>
-                    <span className="font-mono text-green-400">++++++++++</span> - Count to 10 (off to a great start!)
+                    <span className="font-mono text-green-400">++++++++++</span> - Count to 10 (off
+                    to a great start!)
                   </p>
                   <p>
                     <span className="font-mono text-green-400">
                       [&gt;+++++++&gt;++++++++++&gt;+++&lt;&lt;&lt;-]
                     </span>{' '}
-                    - The magic loop that sets up our ASCII values: 70 in cell 2, 100 in cell 3, and 30 in cell 4
+                    - The magic loop that sets up our ASCII values: 70 in cell 2, 100 in cell 3, and
+                    30 in cell 4
                   </p>
                   <p>
-                    <span className="font-mono text-green-400">&gt;++.</span> - Move to cell 2, add 2, output 72 = 'H'
+                    <span className="font-mono text-green-400">&gt;++.</span> - Move to cell 2, add
+                    2, output 72 = 'H'
                   </p>
                   <p>
-                    <span className="font-mono text-green-400">&gt;+.</span> - Move to cell 3, add 1, output 101='e'
+                    <span className="font-mono text-green-400">&gt;+.</span> - Move to cell 3, add
+                    1, output 101='e'
                   </p>
                   <p>
-                    <span className="font-mono text-green-400">+++++++.</span> - Add 7, output 108='l'
+                    <span className="font-mono text-green-400">+++++++.</span> - Add 7, output
+                    108='l'
                   </p>
                   <p>
                     <span className="font-mono text-green-400">.</span> - Output another 'l'
                   </p>
                   <p>
-                    <span className="font-mono text-green-400">+++.</span> - Add 3, output 111='o' (almost there!)
+                    <span className="font-mono text-green-400">+++.</span> - Add 3, output 111='o'
+                    (almost there!)
                   </p>
                   <p>
-                    <span className="font-mono text-green-400">&gt;++.</span> - Move to cell 4, add 2, output 32=' '
+                    <span className="font-mono text-green-400">&gt;++.</span> - Move to cell 4, add
+                    2, output 32=' '
                   </p>
                   <p>...and the rest is just more ASCII arithmetic suffering 🌞</p>
                 </div>
