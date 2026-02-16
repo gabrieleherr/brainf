@@ -3,15 +3,18 @@
  * Cell values are kept in 0..32767 (Java short as unsigned for output).
  */
 
-export function interpretBrainF(code: string, input: string): string {
-  const limit = 26;
-  const global = 1;
+export function interpretBrainF(
+  code: string,
+  input: string,
+  debug = true,
+  limit = 26,
+  global = 2,
+): string {
   const memory = new Array(limit + global).fill(0);
   const funcMap = new Map<string, string>();
   let inputPointer = 0;
   let output = '';
   const maxSteps = 1000000;
-  let totalSteps = 0;
 
   let i = 0;
   let funcName = '';
@@ -117,6 +120,7 @@ export function interpretBrainF(code: string, input: string): string {
     'mn',
     global,
     memory,
+    debug,
     limit,
     global,
     funcMap,
@@ -157,6 +161,7 @@ function runFunction(
   name: string,
   startIndex: number,
   memory: number[],
+  debug: boolean,
   limit: number,
   global: number,
   funcMap: Map<string, string>,
@@ -216,13 +221,13 @@ function runFunction(
         break;
 
       case ',':
-        memory[cellPointer] = hasInput()
-          ? wrapCell(toShort(getInputChar()))
-          : 0;
+        memory[cellPointer] = hasInput() ? wrapCell(toShort(getInputChar())) : 0;
         break;
 
       case '"':
-        outputDebug(memory[cellPointer]);
+        if (debug) {
+          outputDebug(memory[cellPointer]);
+        }
         break;
 
       case '[':
@@ -233,10 +238,7 @@ function runFunction(
             if (operations[codePointer] === ']') runningTotal--;
             else if (operations[codePointer] === '[') runningTotal++;
           }
-          if (
-            codePointer === operations.length - 1 &&
-            operations[codePointer] !== ']'
-          ) {
+          if (codePointer === operations.length - 1 && operations[codePointer] !== ']') {
             return -1;
           }
         } else {
@@ -273,6 +275,7 @@ function runFunction(
             funcName,
             maxPointer + 1,
             memory,
+            debug,
             limit,
             global,
             funcMap,
